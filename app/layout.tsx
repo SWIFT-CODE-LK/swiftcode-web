@@ -16,7 +16,7 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Consoel — Trusted Financial Solution Service",
+  title: "SWIFTCODE",
   description:
     "Consoel provides expert financial consulting, business strategy, and investment planning services.",
 };

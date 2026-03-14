@@ -15,14 +15,14 @@ export default function Home() {
     <main>
       <Navbar />
       <HeroSection />
+      {/* <MissionVisionSection /> */}
       <AboutSection />
       <ServicesSection />
       <CTABanner />
       <StatsSection />
-      <TeamSection />
+      {/* <TeamSection /> */}
       <TestimonialsSection />
       <PartnersSection />
-      <MissionVisionSection />
       <Footer />
     </main>
   );

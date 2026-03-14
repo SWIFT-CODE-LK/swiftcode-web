@@ -14,9 +14,6 @@ export default function CTABanner() {
 
           {/* Dark overlay card */}
           <div className="absolute inset-y-8 left-8 right-8 lg:right-1/3 bg-[#0d2535]/90 backdrop-blur-sm rounded-sm p-8 lg:p-10 flex flex-col justify-between">
-            {/* Orange blob decoration */}
-            <div className="absolute -left-4 top-1/2 -translate-y-1/2 w-20 h-28 bg-orange-500 rounded-full blur-sm opacity-80 -z-10" />
-
             <div>
               <p className="text-orange-400 text-xs font-bold tracking-[0.2em] uppercase mb-3">
                 We Are Here
@@ -31,9 +28,9 @@ export default function CTABanner() {
             <div className="mt-6 lg:mt-0">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold px-7 py-3.5 transition-all duration-200 text-sm"
+                className="inline-flex items-center gap-2 bg-(--theme-color) hover:bg-orange-600 text-white font-semibold px-7 py-3.5 transition-all duration-200 text-sm"
               >
-                Call Us
+                Contact Us
                 <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>

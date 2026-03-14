@@ -125,7 +125,7 @@ export default function ServicesPage() {
           <circle cx="288" cy="0" r="160" fill="none" stroke="currentColor" strokeWidth="1" />
         </svg>
         <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 xl:px-20">
-          <p className="text-orange-500 text-xs font-bold tracking-[0.2em] uppercase mb-3">Our Work</p>
+          <p className="text-(--theme-color) text-xs font-bold tracking-[0.2em] uppercase mb-3">Our Work</p>
           <h1 className="font-serif text-4xl lg:text-6xl font-bold text-white mb-4 max-w-2xl">
             Projects & Services
           </h1>
@@ -135,7 +135,7 @@ export default function ServicesPage() {
           <div className="flex items-center gap-2 mt-6 text-sm">
             <Link href="/" className="text-white/50 hover:text-orange-400 transition-colors">Home</Link>
             <span className="text-white/30">/</span>
-            <span className="text-orange-400">Projects & Services</span>
+            <span className="text-orange-500">Projects & Services</span>
           </div>
           {/* Quick jump buttons */}
           <div className="flex flex-wrap gap-3 mt-8">
@@ -143,7 +143,7 @@ export default function ServicesPage() {
               <a
                 key={s.id}
                 href={"#" + s.id}
-                className="text-xs font-bold tracking-widest uppercase text-white/50 hover:text-orange-400 border border-white/10 hover:border-orange-500/50 px-4 py-2 transition-all duration-200"
+                className="text-xs font-bold tracking-widest uppercase text-white/50 hover:text-(--theme-color) border border-white/10 hover:border-orange-500/50 px-4 py-2 transition-all duration-200"
               >
                 {s.title}
               </a>
@@ -168,7 +168,7 @@ export default function ServicesPage() {
               </div>
               <Link
                 href="/contact"
-                className="flex-shrink-0 inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 text-sm transition-all duration-200"
+                className="flex-shrink-0 inline-flex items-center gap-2 bg-(--theme-color) hover:bg-orange-600 text-white font-semibold px-6 py-3 text-sm transition-all duration-200"
               >
                 Get a Quote
                 <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor">
@@ -206,7 +206,7 @@ export default function ServicesPage() {
                   >
                     <div className="h-1.5 bg-gradient-to-r from-[#0d2535] to-orange-500" />
                     <div className="p-6">
-                      <h4 className="font-serif text-base font-bold text-[#0d2535] mb-2 group-hover:text-orange-500 transition-colors">
+                      <h4 className="font-serif text-base font-bold text-[#0d2535] mb-2 group-hover:text-(--theme-color) transition-colors">
                         {project.title}
                       </h4>
                       <p className="text-gray-500 text-sm leading-relaxed mb-4">{project.description}</p>
@@ -227,7 +227,7 @@ export default function ServicesPage() {
       ))}
 
       {/* CTA */}
-      <section className="py-16 bg-orange-500 relative overflow-hidden">
+      <section className="py-16 bg-(--theme-color) relative overflow-hidden">
         <div className="absolute -left-16 top-1/2 -translate-y-1/2 w-48 h-48 bg-[#0d2535] rounded-full opacity-30" />
         <div className="absolute -right-16 top-1/2 -translate-y-1/2 w-56 h-56 bg-[#0d2535] rounded-full opacity-20" />
         <div className="relative max-w-7xl mx-auto px-6 md:px-10 lg:px-16 xl:px-20 flex flex-col lg:flex-row items-center justify-between gap-6">
@@ -235,7 +235,7 @@ export default function ServicesPage() {
             <p className="text-white/80 text-sm font-bold tracking-widest uppercase mb-2">Ready to start?</p>
             <h2 className="font-serif text-3xl lg:text-4xl font-bold text-white">Let us build something great together.</h2>
           </div>
-          <Link href="/contact" className="flex-shrink-0 bg-white hover:bg-gray-100 text-orange-500 font-bold px-8 py-4 transition-all duration-200 hover:shadow-lg text-sm whitespace-nowrap">
+          <Link href="/contact" className="flex-shrink-0 bg-white hover:bg-gray-100 text-(--theme-color) font-bold px-8 py-4 transition-all duration-200 hover:shadow-lg text-sm whitespace-nowrap">
             Get In Touch →
           </Link>
         </div>

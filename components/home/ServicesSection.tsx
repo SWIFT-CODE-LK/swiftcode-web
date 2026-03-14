@@ -39,7 +39,7 @@ export default function ServicesSection() {
   return (
     <section className="py-20 lg:py-28 bg-[#0d2535] relative overflow-hidden">
       {/* Decorative circle arcs */}
-      <svg className="absolute top-0 left-0 w-64 h-64 text-orange-500 opacity-20" viewBox="0 0 256 256">
+      <svg className="absolute top-0 left-0 w-64 h-64 text-(--theme-color) opacity-20" viewBox="0 0 256 256">
         <circle cx="0" cy="0" r="200" fill="none" stroke="currentColor" strokeWidth="1.5" />
         <circle cx="0" cy="0" r="160" fill="none" stroke="currentColor" strokeWidth="1" />
       </svg>
@@ -65,7 +65,7 @@ export default function ServicesSection() {
               key={svc.title}
               onClick={() => setActive(idx)}
               className={`relative mx-3 mb-6 lg:mb-0 cursor-pointer transition-all duration-300 overflow-hidden rounded-sm
-                ${active === idx ? "bg-orange-500 scale-105 z-10 shadow-2xl shadow-orange-500/30" : "bg-[#0a2233]"}
+                ${active === idx ? "bg-(--theme-color) scale-105 z-10 shadow-2xl shadow-orange-500/30" : "bg-[#0a2233]"}
               `}
               style={{ minHeight: "340px" }}
             >
@@ -95,7 +95,7 @@ export default function ServicesSection() {
                     href="/services"
                     className={`inline-flex items-center gap-2 text-sm font-semibold border px-5 py-2.5 transition-all duration-200
                       ${active === idx
-                        ? "border-white text-white hover:bg-white hover:text-orange-500"
+                        ? "border-white text-white hover:bg-white hover:text-(--theme-color)"
                         : "border-white/30 text-white/70 hover:border-orange-500 hover:text-orange-400"
                       }`}
                   >
@@ -117,7 +117,7 @@ export default function ServicesSection() {
               key={idx}
               onClick={() => setActive(idx)}
               className={`transition-all duration-300 rounded-full ${
-                active === idx ? "w-8 h-3 bg-orange-500" : "w-3 h-3 bg-white/30 hover:bg-white/50"
+                active === idx ? "w-8 h-3 bg-(--theme-color)" : "w-3 h-3 bg-white/30 hover:bg-white/50"
               }`}
             />
           ))}

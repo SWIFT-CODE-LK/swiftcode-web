@@ -28,9 +28,15 @@ export default function AboutSection() {
               {/* Replace with <Image> from next/image */}
               <div className="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center">
                 <div className="text-center text-gray-500">
-                  <svg viewBox="0 0 80 80" className="w-20 h-20 mx-auto mb-2 opacity-40">
+                  <svg
+                    viewBox="0 0 80 80"
+                    className="w-20 h-20 mx-auto mb-2 opacity-40"
+                  >
                     <circle cx="40" cy="28" r="18" fill="currentColor" />
-                    <path d="M8 72 Q8 48 40 46 Q72 48 72 72Z" fill="currentColor" />
+                    <path
+                      d="M8 72 Q8 48 40 46 Q72 48 72 72Z"
+                      fill="currentColor"
+                    />
                   </svg>
                   <p className="text-sm">Business Portrait Image</p>
                 </div>
@@ -56,7 +62,10 @@ export default function AboutSection() {
             <div className="absolute bottom-8 -right-4 lg:-right-8">
               <div className="relative">
                 {/* Orange brushstroke bg */}
-                <svg viewBox="0 0 280 80" className="w-64 lg:w-72 h-auto text-orange-500 drop-shadow-lg">
+                <svg
+                  viewBox="0 0 280 80"
+                  className="w-64 lg:w-72 h-auto text-(--theme-color) drop-shadow-lg"
+                >
                   <path
                     d="M5 20 Q10 5 30 8 L260 5 Q275 6 275 20 L272 60 Q270 75 250 74 L20 72 Q5 71 5 58Z"
                     fill="currentColor"
@@ -76,22 +85,34 @@ export default function AboutSection() {
             </p>
             <h2 className="font-serif text-4xl lg:text-5xl font-bold text-[#0d2535] leading-tight mb-6">
               We are trusted consulting company,{" "}
-              <span className="text-orange-500">with 28+ years</span> of experience.
+              <span className="text-orange-500">with 28+ years</span> of
+              experience.
             </h2>
             <p className="text-gray-500 text-base leading-relaxed mb-8 max-w-lg">
-              Lorem Ipsum is simply dummy text of the printing and typesetting's the
-              industrey's standard dummy text ever since the 1500 when printed galley of
-              type and scrambled type specimen book. One way to categorize the activities
-              is in terms of the professional's area of expertise such as competitive
-              analysis, corporate strategy.
+              Lorem Ipsum is simply dummy text of the printing and typesetting's
+              the industrey's standard dummy text ever since the 1500 when
+              printed galley of type and scrambled type specimen book. One way
+              to categorize the activities is in terms of the professional's
+              area of expertise such as competitive analysis, corporate
+              strategy.
             </p>
             <Link
               href="/about"
-              className="inline-flex items-center gap-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold px-7 py-4 transition-all duration-200 hover:shadow-lg hover:shadow-orange-500/25"
+              className="inline-flex items-center gap-3 bg-(--theme-color) hover:bg-orange-600 text-white font-semibold px-7 py-4 transition-all duration-200 hover:shadow-lg hover:shadow-orange-500/25"
             >
               More About Us
-              <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              <svg
+                viewBox="0 0 24 24"
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2.5}
+                  d="M13 7l5 5m0 0l-5 5m5-5H6"
+                />
               </svg>
             </Link>
           </div>

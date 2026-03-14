@@ -62,20 +62,23 @@ export default function HeroSection() {
       </div>
 
       {/* Grid lines decoration */}
-      <div className="absolute inset-0 opacity-[0.03]"
+      <div
+        className="absolute inset-0 opacity-[0.03]"
         style={{
-          backgroundImage: "linear-gradient(0deg, transparent 24%, rgba(255,255,255,.5) 25%, rgba(255,255,255,.5) 26%, transparent 27%, transparent 74%, rgba(255,255,255,.5) 75%, rgba(255,255,255,.5) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(255,255,255,.5) 25%, rgba(255,255,255,.5) 26%, transparent 27%, transparent 74%, rgba(255,255,255,.5) 75%, rgba(255,255,255,.5) 76%, transparent 77%, transparent)",
+          backgroundImage:
+            "linear-gradient(0deg, transparent 24%, rgba(255,255,255,.5) 25%, rgba(255,255,255,.5) 26%, transparent 27%, transparent 74%, rgba(255,255,255,.5) 75%, rgba(255,255,255,.5) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(255,255,255,.5) 25%, rgba(255,255,255,.5) 26%, transparent 27%, transparent 74%, rgba(255,255,255,.5) 75%, rgba(255,255,255,.5) 76%, transparent 77%, transparent)",
           backgroundSize: "80px 80px",
         }}
       />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-20 lg:pt-0">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-0 items-center min-h-screen lg:min-h-0 py-24 lg:py-32">
-
           {/* Left: Text Content */}
           <div
             className={`transition-all duration-300 ${
-              animating ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"
+              animating
+                ? "opacity-0 translate-y-4"
+                : "opacity-100 translate-y-0"
             }`}
           >
             {/* Tagline */}
@@ -96,7 +99,7 @@ export default function HeroSection() {
             {/* CTA */}
             <Link
               href="/services"
-              className="inline-flex items-center gap-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold text-sm px-7 py-4 transition-all duration-200 hover:shadow-xl hover:shadow-orange-500/30 hover:gap-4"
+              className="inline-flex items-center gap-3 bg-(--theme-color) hover:opacity-90 text-white font-semibold text-sm px-7 py-4 transition-all duration-200 hover:shadow-xl hover:shadow-orange-500/30 hover:gap-4"
             >
               Explore More
               <span className="flex items-center text-xs">»</span>
@@ -148,11 +151,26 @@ export default function HeroSection() {
                 <div className="w-full h-full flex items-center justify-center">
                   <div className="text-center">
                     {/* Silhouette placeholder */}
-                    <svg viewBox="0 0 200 280" className="w-40 h-56 opacity-40 mx-auto" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <circle cx="100" cy="75" r="45" fill="rgba(255,255,255,0.3)" />
-                      <path d="M20 280 Q20 160 100 155 Q180 160 180 280Z" fill="rgba(255,255,255,0.3)" />
+                    <svg
+                      viewBox="0 0 200 280"
+                      className="w-40 h-56 opacity-40 mx-auto"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <circle
+                        cx="100"
+                        cy="75"
+                        r="45"
+                        fill="rgba(255,255,255,0.3)"
+                      />
+                      <path
+                        d="M20 280 Q20 160 100 155 Q180 160 180 280Z"
+                        fill="rgba(255,255,255,0.3)"
+                      />
                     </svg>
-                    <p className="text-white/30 text-xs mt-2">Portrait Image Here</p>
+                    <p className="text-white/30 text-xs mt-2">
+                      Portrait Image Here
+                    </p>
                   </div>
                 </div>
               </div>

@@ -36,23 +36,53 @@ const contactCards = [
   },
 ];
 
-export default function ContactPage() {
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    service: "",
-    message: "",
-  });
-  const [submitted, setSubmitted] = useState(false);
+type FormState = {
+  name: string;
+  email: string;
+  phone: string;
+  service: string;
+  message: string;
+};
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+const EMPTY_FORM: FormState = { name: "", email: "", phone: "", service: "", message: "" };
+
+export default function ContactPage() {
+  const [form, setForm] = useState<FormState>(EMPTY_FORM);
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setStatus("sending");
+    setErrorMsg("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setErrorMsg(data.error || "Something went wrong. Please try again.");
+        setStatus("error");
+        return;
+      }
+
+      setStatus("success");
+      setForm(EMPTY_FORM);
+    } catch {
+      setErrorMsg("Network error. Please check your connection and try again.");
+      setStatus("error");
+    }
   };
 
   return (
@@ -61,12 +91,12 @@ export default function ContactPage() {
 
       {/* Page Hero */}
       <section className="bg-[#0d2535] pt-32 pb-16 relative overflow-hidden">
-        <svg className="absolute top-0 right-0 w-72 h-72 text-orange-500 opacity-10" viewBox="0 0 288 288">
+        <svg className="absolute top-0 right-0 w-72 h-72 text-(--theme-color) opacity-10" viewBox="0 0 288 288">
           <circle cx="288" cy="0" r="220" fill="none" stroke="currentColor" strokeWidth="1.5" />
           <circle cx="288" cy="0" r="155" fill="none" stroke="currentColor" strokeWidth="1" />
         </svg>
         <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 xl:px-20">
-          <p className="text-orange-500 text-xs font-bold tracking-[0.2em] uppercase mb-3">Reach Out</p>
+          <p className="text-(--theme-color) text-xs font-bold tracking-[0.2em] uppercase mb-3">Reach Out</p>
           <h1 className="font-serif text-4xl lg:text-6xl font-bold text-white mb-4 max-w-xl leading-tight">
             Contact Us
           </h1>
@@ -74,9 +104,9 @@ export default function ContactPage() {
             Have a question or ready to start a project? We would love to hear from you.
           </p>
           <div className="flex items-center gap-2 mt-6 text-sm">
-            <Link href="/" className="text-white/50 hover:text-orange-400 transition-colors">Home</Link>
+            <Link href="/" className="text-white/50 hover:text-(--theme-color) transition-colors">Home</Link>
             <span className="text-white/30">/</span>
-            <span className="text-orange-400">Contact Us</span>
+            <span className="text-(--theme-color)">Contact Us</span>
           </div>
         </div>
       </section>
@@ -90,8 +120,7 @@ export default function ContactPage() {
                 key={card.title}
                 className="flex flex-col items-center text-center p-8 border border-gray-100 rounded-sm hover:border-orange-200 hover:shadow-lg hover:shadow-orange-500/5 transition-all duration-300 group"
               >
-                {/* Icon circle */}
-                <div className="w-16 h-16 rounded-full bg-gray-50 group-hover:bg-orange-50 flex items-center justify-center text-gray-400 group-hover:text-orange-500 transition-all duration-300 mb-5">
+                <div className="w-16 h-16 rounded-full bg-gray-50 group-hover:bg-orange-50 flex items-center justify-center text-gray-400 group-hover:text-(--theme-color) transition-all duration-300 mb-5">
                   {card.icon}
                 </div>
                 <h3 className="font-serif text-xl font-bold text-[#0d2535] mb-3">{card.title}</h3>
@@ -104,26 +133,22 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Map + Form Section */}
+      {/* Map + Form */}
       <section className="pb-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 xl:px-20">
-          {/* Map placeholder */}
+          {/* Map */}
           <div className="relative rounded-sm overflow-hidden mb-16" style={{ height: "360px" }}>
-            <div className="absolute inset-0 bg-gray-200">
-              {/* Embed your Google Maps iframe here. Replace the src with your embed URL. */}
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387191.33750346623!2d-73.97968099999999!3d40.6974881!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Office Location"
-              />
-            </div>
-            {/* Address pin overlay */}
-            <div className="absolute bottom-6 left-6 bg-white shadow-lg px-5 py-3 rounded-sm border-l-4 border-orange-500">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387191.33750346623!2d-73.97968099999999!3d40.6974881!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Office Location"
+            />
+            <div className="absolute bottom-6 left-6 bg-white shadow-lg px-5 py-3 rounded-sm border-l-4 border-(--theme-color)">
               <p className="font-bold text-sm text-[#0d2535]">Consoel Head Office</p>
               <p className="text-gray-500 text-xs mt-0.5">7 Green Lake Street, Crawfordsville, IN 47933</p>
             </div>
@@ -138,9 +163,10 @@ export default function ContactPage() {
               </p>
             </div>
 
-            {submitted ? (
+            {/* Success state */}
+            {status === "success" ? (
               <div className="text-center py-16 border border-orange-100 bg-orange-50 rounded-sm">
-                <div className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-5">
+                <div className="w-16 h-16 bg-(--theme-color) rounded-full flex items-center justify-center mx-auto mb-5">
                   <svg viewBox="0 0 24 24" className="w-8 h-8 text-white" fill="none" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                   </svg>
@@ -148,8 +174,8 @@ export default function ContactPage() {
                 <h3 className="font-serif text-2xl font-bold text-[#0d2535] mb-2">Message Sent!</h3>
                 <p className="text-gray-500 text-sm">Thank you for reaching out. We will get back to you within 24 hours.</p>
                 <button
-                  onClick={() => { setSubmitted(false); setForm({ name: "", email: "", phone: "", service: "", message: "" }); }}
-                  className="mt-6 text-orange-500 text-sm font-semibold hover:underline"
+                  onClick={() => setStatus("idle")}
+                  className="mt-6 text-(--theme-color) text-sm font-semibold hover:underline"
                 >
                   Send another message
                 </button>
@@ -157,54 +183,48 @@ export default function ContactPage() {
             ) : (
               <form onSubmit={handleSubmit} className="border border-gray-100 rounded-sm p-8 lg:p-10 shadow-sm">
                 <div className="grid sm:grid-cols-2 gap-5 mb-5">
-                  {/* Name */}
-                  <div>
-                    <input
-                      type="text"
-                      name="name"
-                      value={form.name}
-                      onChange={handleChange}
-                      placeholder="Your Name"
-                      required
-                      className="w-full border border-gray-200 focus:border-orange-500 focus:outline-none px-4 py-3 text-sm text-gray-700 placeholder-gray-400 rounded-sm transition-colors duration-200"
-                    />
-                  </div>
-                  {/* Email */}
-                  <div>
-                    <input
-                      type="email"
-                      name="email"
-                      value={form.email}
-                      onChange={handleChange}
-                      placeholder="Your Email"
-                      required
-                      className="w-full border border-gray-200 focus:border-orange-500 focus:outline-none px-4 py-3 text-sm text-gray-700 placeholder-gray-400 rounded-sm transition-colors duration-200"
-                    />
-                  </div>
-                  {/* Phone */}
-                  <div>
-                    <input
-                      type="tel"
-                      name="phone"
-                      value={form.phone}
-                      onChange={handleChange}
-                      placeholder="Your phone"
-                      className="w-full border border-gray-200 focus:border-orange-500 focus:outline-none px-4 py-3 text-sm text-gray-700 placeholder-gray-400 rounded-sm transition-colors duration-200"
-                    />
-                  </div>
-                  {/* Service dropdown */}
+                  <input
+                    type="text"
+                    name="name"
+                    value={form.name}
+                    onChange={handleChange}
+                    placeholder="Your Name"
+                    required
+                    disabled={status === "sending"}
+                    className="w-full border border-gray-200 focus:border-(--theme-color) focus:outline-none px-4 py-3 text-sm text-gray-700 placeholder-gray-400 rounded-sm transition-colors duration-200 disabled:opacity-50"
+                  />
+                  <input
+                    type="email"
+                    name="email"
+                    value={form.email}
+                    onChange={handleChange}
+                    placeholder="Your Email"
+                    required
+                    disabled={status === "sending"}
+                    className="w-full border border-gray-200 focus:border-(--theme-color) focus:outline-none px-4 py-3 text-sm text-gray-700 placeholder-gray-400 rounded-sm transition-colors duration-200 disabled:opacity-50"
+                  />
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={form.phone}
+                    onChange={handleChange}
+                    placeholder="Your phone"
+                    disabled={status === "sending"}
+                    className="w-full border border-gray-200 focus:border-(--theme-color) focus:outline-none px-4 py-3 text-sm text-gray-700 placeholder-gray-400 rounded-sm transition-colors duration-200 disabled:opacity-50"
+                  />
                   <div className="relative">
                     <select
                       name="service"
                       value={form.service}
                       onChange={handleChange}
-                      className="w-full border border-gray-200 focus:border-orange-500 focus:outline-none px-4 py-3 text-sm text-gray-400 rounded-sm appearance-none bg-white transition-colors duration-200 cursor-pointer"
+                      disabled={status === "sending"}
+                      className="w-full border border-gray-200 focus:border-(--theme-color) focus:outline-none px-4 py-3 text-sm text-gray-500 rounded-sm appearance-none bg-white transition-colors duration-200 cursor-pointer disabled:opacity-50"
                     >
                       <option value="" disabled>Choose a Service</option>
-                      <option value="erp">ERP System</option>
-                      <option value="pos">POS Solution</option>
-                      <option value="web">Web Application</option>
-                      <option value="mobile">Mobile Application</option>
+                      <option value="ERP System">ERP System</option>
+                      <option value="POS Solution">POS Solution</option>
+                      <option value="Web Application">Web Application</option>
+                      <option value="Mobile Application">Mobile Application</option>
                     </select>
                     <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
                       <svg viewBox="0 0 16 16" className="w-4 h-4" fill="none" stroke="currentColor">
@@ -214,7 +234,6 @@ export default function ContactPage() {
                   </div>
                 </div>
 
-                {/* Message */}
                 <div className="mb-8">
                   <textarea
                     name="message"
@@ -223,20 +242,43 @@ export default function ContactPage() {
                     placeholder="Message"
                     rows={6}
                     required
-                    className="w-full border border-gray-200 focus:border-orange-500 focus:outline-none px-4 py-3 text-sm text-gray-700 placeholder-gray-400 rounded-sm resize-y transition-colors duration-200"
+                    disabled={status === "sending"}
+                    className="w-full border border-gray-200 focus:border-(--theme-color) focus:outline-none px-4 py-3 text-sm text-gray-700 placeholder-gray-400 rounded-sm resize-y transition-colors duration-200 disabled:opacity-50"
                   />
                 </div>
 
-                {/* Submit */}
+                {/* Error message */}
+                {status === "error" && (
+                  <div className="mb-6 px-4 py-3 bg-red-50 border border-red-200 rounded-sm text-red-600 text-sm flex items-center gap-2">
+                    <svg viewBox="0 0 20 20" className="w-4 h-4 flex-shrink-0" fill="currentColor">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                    </svg>
+                    {errorMsg}
+                  </div>
+                )}
+
                 <div className="text-center">
                   <button
                     type="submit"
-                    className="inline-flex items-center gap-3 bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white font-semibold px-10 py-4 transition-all duration-200 hover:shadow-lg hover:shadow-orange-500/30 text-sm"
+                    disabled={status === "sending"}
+                    className="inline-flex items-center gap-3 bg-(--theme-color) hover:opacity-90 disabled:opacity-60 text-white font-semibold px-10 py-4 transition-all duration-200 hover:shadow-lg hover:shadow-orange-500/30 text-sm disabled:cursor-not-allowed"
                   >
-                    Submit Now
-                    <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
+                    {status === "sending" ? (
+                      <>
+                        <svg className="w-4 h-4 animate-spin" viewBox="0 0 24 24" fill="none">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                        </svg>
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        Submit Now
+                        <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                        </svg>
+                      </>
+                    )}
                   </button>
                 </div>
               </form>

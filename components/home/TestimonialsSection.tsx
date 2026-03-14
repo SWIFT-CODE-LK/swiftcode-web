@@ -60,7 +60,7 @@ export default function TestimonialsSection() {
                   key={idx}
                   onClick={() => setActive(idx)}
                   className={`transition-all duration-300 rounded-full ${
-                    active === idx ? "w-8 h-3 bg-orange-500" : "w-3 h-3 bg-gray-300 hover:bg-gray-400"
+                    active === idx ? "w-8 h-3 bg-(--theme-color)" : "w-3 h-3 bg-gray-300 hover:bg-gray-400"
                   }`}
                 />
               ))}
@@ -84,7 +84,7 @@ export default function TestimonialsSection() {
               {/* Play button overlay */}
               <button className="absolute inset-0 flex items-center justify-center group">
                 <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-200">
-                  <svg viewBox="0 0 24 24" className="w-6 h-6 text-orange-500 ml-1" fill="currentColor">
+                  <svg viewBox="0 0 24 24" className="w-6 h-6 text-(--theme-color) ml-1" fill="currentColor">
                     <path d="M8 5v14l11-7z" />
                   </svg>
                 </div>

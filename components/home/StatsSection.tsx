@@ -3,8 +3,7 @@ import { useEffect, useRef, useState } from "react";
 
 const stats = [
   { value: 8567, suffix: "", label: "Completed Cases" },
-  { value: 357, suffix: "+", label: "Happy Clients" },
-  { value: 28, suffix: "+", label: "Our Office" },
+  { value: 3, suffix: "+", label: "Happy Clients" },
   { value: 785, suffix: "", label: "Skilled People" },
 ];
 
@@ -50,7 +49,7 @@ export default function StatsSection() {
   }, []);
 
   return (
-    <section ref={ref} className="relative bg-orange-500 py-16 overflow-hidden">
+    <section ref={ref} className="relative bg-(--theme-color) py-16 overflow-hidden">
       {/* Dark blob decorations */}
       <div className="absolute -left-16 top-1/2 -translate-y-1/2 w-48 h-48 bg-[#0d2535] rounded-full opacity-70" />
       <div className="absolute -right-16 top-1/2 -translate-y-1/2 w-56 h-56 bg-[#0d2535] rounded-full opacity-50" />
@@ -60,7 +59,7 @@ export default function StatsSection() {
       </svg>
 
       <div className="relative max-w-7xl mx-auto px-6 md:px-10 lg:px-16 xl:px-20">
-        <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-white/20">
+        <div className="grid grid-cols-2 lg:grid-cols-3 divide-x divide-white/20">
           {stats.map((stat) => (
             <StatItem key={stat.label} {...stat} started={started} />
           ))}
