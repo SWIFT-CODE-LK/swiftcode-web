@@ -46,7 +46,7 @@ const contactDetails = [
   // },
 ];
 
-const bottomLinks = ["Vision & Values", "History", "Awards", "Leadership"];
+const bottomLinks = ["Vision & Values", "History"];
 
 export default function Footer() {
   return (
