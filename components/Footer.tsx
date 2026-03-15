@@ -4,17 +4,46 @@ import Logo from "./navbar/Logo";
 const companyLinks = [
   { label: "About company", href: "/about" },
   { label: "Our services", href: "/services" },
-  { label: "Job opportunities", href: "/careers" },
   { label: "Contact us", href: "/contact" },
-  { label: "Vision & Values", href: "/about#vision" },
 ];
 
-const recentPosts = [
+const contactDetails = [
   {
-    title: "What are the pros and cons of becoming a consultant?",
-    date: "10.02.2022",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.03 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z" />
+      </svg>
+    ),
+    label: "Phone",
+    phones: [
+      { value: "+94 70 490 0850", href: "tel:+94704900850" },
+      { value: "+94 76 621 6791", href: "tel:+94766216791" },
+    ],
+    value: "",
+    href: "",
   },
-  { title: "We are able to give truly independent advice", date: "10.02.2022" },
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+        <polyline points="22,6 12,13 2,6" />
+      </svg>
+    ),
+    label: "Email",
+    value: "swiftcode.srilanka@gmail.com",
+    href: "mailto:hello@swiftcode.com",
+  },
+  // {
+  //   icon: (
+  //     <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+  //       <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z" />
+  //       <circle cx="12" cy="10" r="3" />
+  //     </svg>
+  //   ),
+  //   label: "Address",
+  //   value: "123 Business Ave, New York, NY 10001",
+  //   href: "#",
+  // },
 ];
 
 const bottomLinks = ["Vision & Values", "History", "Awards", "Leadership"];
@@ -33,8 +62,7 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <Logo />
             <p className="text-white/50 text-sm leading-relaxed mb-6">
-              Many desktop publishing packages web page editors now is use model
-              search for many web sites.
+              Swiftcode builds smart, scalable software solutions designed to transform ideas into powerful digital experiences.
             </p>
             {/* Social icons */}
             <div className="flex items-center gap-3">
@@ -72,44 +100,41 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Recent posts */}
+          {/* Contact Us */}
           <div>
             <h4 className="text-white font-serif text-lg font-bold mb-5">
-              Recent Post
+              Contact Us
             </h4>
-            <div className="space-y-5">
-              {recentPosts.map((post) => (
-                <div key={post.title}>
-                  <Link
-                    href="/blog"
-                    className="text-white/80 hover:text-orange-400 text-sm font-semibold leading-snug transition-colors duration-200 block mb-1.5"
-                  >
-                    {post.title}
-                  </Link>
-                  <div className="flex items-center gap-1.5 text-orange-500 text-xs">
-                    <svg
-                      viewBox="0 0 16 16"
-                      className="w-3.5 h-3.5"
-                      fill="currentColor"
-                    >
-                      <rect
-                        x="1"
-                        y="3"
-                        width="14"
-                        height="12"
-                        rx="2"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                      />
-                      <path
-                        d="M5 1v4M11 1v4M1 7h14"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                      />
-                    </svg>
-                    {post.date}
+            <div className="space-y-4">
+              {contactDetails.map((item) => (
+                <div key={item.label} className="flex items-start gap-3 group">
+                  <span className="mt-0.5 text-orange-500 shrink-0">
+                    {item.icon}
+                  </span>
+                  <div>
+                    <p className="text-white/30 text-xs uppercase tracking-wider mb-0.5">
+                      {item.label}
+                    </p>
+                    {"phones" in item && item.phones ? (
+                      <div className="space-y-0.5">
+                        {item.phones.map((phone) => (
+                          <a
+                            key={phone.href}
+                            href={phone.href}
+                            className="block text-white/70 hover:text-orange-400 text-sm transition-colors duration-200 leading-snug"
+                          >
+                            {phone.value}
+                          </a>
+                        ))}
+                      </div>
+                    ) : (
+                      <a
+                        href={item.href}
+                        className="text-white/70 hover:text-orange-400 text-sm transition-colors duration-200 leading-snug"
+                      >
+                        {item.value}
+                      </a>
+                    )}
                   </div>
                 </div>
               ))}

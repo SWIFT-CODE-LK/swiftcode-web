@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function AboutSection() {
   return (
@@ -24,23 +25,14 @@ export default function AboutSection() {
             </svg>
 
             {/* Main image */}
-            <div className="relative rounded-sm overflow-hidden bg-gray-200 aspect-[4/5] max-w-sm mx-auto lg:mx-0">
-              {/* Replace with <Image> from next/image */}
-              <div className="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center">
-                <div className="text-center text-gray-500">
-                  <svg
-                    viewBox="0 0 80 80"
-                    className="w-20 h-20 mx-auto mb-2 opacity-40"
-                  >
-                    <circle cx="40" cy="28" r="18" fill="currentColor" />
-                    <path
-                      d="M8 72 Q8 48 40 46 Q72 48 72 72Z"
-                      fill="currentColor"
-                    />
-                  </svg>
-                  <p className="text-sm">Business Portrait Image</p>
-                </div>
-              </div>
+            <div className="relative rounded-sm overflow-hidden bg-gray-800 aspect-[5/5] max-w-sm mx-auto lg:mx-0">
+              <Image
+                src="/SwiftCode.png"
+                alt="About Swiftcode"
+                fill
+                className="object-cover"
+                priority
+              />
             </div>
 
             {/* Decorative squiggle bottom-left */}
@@ -59,9 +51,8 @@ export default function AboutSection() {
             </svg>
 
             {/* Experience badge */}
-            <div className="absolute bottom-8 -right-4 lg:-right-8">
+            {/* <div className="absolute bottom-8 -right-4 lg:-right-8">
               <div className="relative">
-                {/* Orange brushstroke bg */}
                 <svg
                   viewBox="0 0 280 80"
                   className="w-64 lg:w-72 h-auto text-(--theme-color) drop-shadow-lg"
@@ -75,26 +66,21 @@ export default function AboutSection() {
                   15 Years Experience
                 </p>
               </div>
-            </div>
+            </div> */}
           </div>
 
           {/* Right: Text */}
           <div>
             <p className="text-orange-500 text-sm font-bold tracking-[0.15em] uppercase mb-3">
-              Welcome To Consoel Consultancy Company
+              Welcome To Swiftcode
             </p>
             <h2 className="font-serif text-4xl lg:text-5xl font-bold text-[#0d2535] leading-tight mb-6">
-              We are trusted consulting company,{" "}
-              <span className="text-orange-500">with 28+ years</span> of
-              experience.
+              We are a modern software development company,{" "}
+              <span className="text-orange-500">delivering innovative digital solutions</span> since
+              2022.
             </h2>
             <p className="text-gray-500 text-base leading-relaxed mb-8 max-w-lg">
-              Lorem Ipsum is simply dummy text of the printing and typesetting's
-              the industrey's standard dummy text ever since the 1500 when
-              printed galley of type and scrambled type specimen book. One way
-              to categorize the activities is in terms of the professional's
-              area of expertise such as competitive analysis, corporate
-              strategy.
+              Swiftcode is a technology-driven software company focused on building smart, scalable, and efficient digital solutions. From custom software development to modern web platforms, we help businesses transform ideas into powerful digital products and grow in an increasingly digital world.
             </p>
             <Link
               href="/about"

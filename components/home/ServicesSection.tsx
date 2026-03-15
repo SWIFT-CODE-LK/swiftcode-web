@@ -4,30 +4,30 @@ import Link from "next/link";
 
 const services = [
   {
-    title: "Business Analysis",
+    title: "Website Design & Development",
     description:
-      "Lorem Ipsum is simply dummy text of the the industreys standard dummy text ever scrambled type specimen book.",
+      "Professional business websites, e-commerce platforms, and corporate websites designed for performance and modern user experience.",
     image: true,
     accent: false,
   },
   {
-    title: "Financial Advices",
+    title: "ERP System Development",
     description:
-      "Lorem Ipsum is simply dummy text of the the industreys standard dummy text ever scrambled type specimen book.",
+      "Development of powerful Enterprise Resource Planning systems to manage accounting, inventory, HR, sales, and overall business operations in one platform.",
     image: false,
     accent: true,
   },
   {
-    title: "Risk Management",
+    title: "System Integration",
     description:
-      "Lorem Ipsum is simply dummy text of the the industreys standard dummy text ever scrambled type specimen book.",
+      "Connecting different business systems such as ERP, POS, payment gateways, and third-party services to create a seamless workflow.",
     image: true,
     accent: false,
   },
   {
-    title: "Investment Planning",
+    title: "Software Maintenance & Support",
     description:
-      "Lorem Ipsum is simply dummy text of the the industreys standard dummy text ever scrambled type specimen book.",
+      "Ongoing technical support, updates, system improvements, and performance monitoring to ensure your systems run smoothly.",
     image: true,
     accent: false,
   },

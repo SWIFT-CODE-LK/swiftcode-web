@@ -1,24 +1,25 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 
 const testimonials = [
   {
     quote:
-      '"I just wanted to share a quick note and let you know that you guys do a really good job. I\'m glad I decided to work with you. It\'s really great how easy. One way to categorize the activities is in terms."',
-    role: "Founder",
-    name: "Cathi Falcon",
+      '"Swiftcode developed our POS and inventory system, and it completely improved our daily operations. The system is fast, reliable, and very easy for our staff to use."',
+    role: "Managing Director",
+    name: "Sanduni Jayasinghe",
   },
   {
     quote:
-      '"Working with Consoel has been an absolute game changer for our business. Their expertise in financial consulting has helped us grow revenue by 40% in just one year."',
-    role: "CEO",
-    name: "James Hartley",
+      '"We partnered with Swiftcode to build our company ERP system. Their team understood our requirements perfectly and delivered a powerful solution that streamlined our business processes."',
+    role: "Operations Manager",
+    name: "Kasun Fernando",
   },
   {
     quote:
-      '"The team at Consoel understands business challenges deeply and provides strategic advice that actually works in practice. Highly recommend their services."',
-    role: "Director",
-    name: "Maria Santos",
+      '"The web application developed by Swiftcode has helped us manage our business more efficiently. Their technical support and professionalism are truly impressive."',
+    role: "Business Owner",
+    name: "Naleen Buddhika",
   },
 ];
 
@@ -67,28 +68,24 @@ export default function TestimonialsSection() {
             </div>
           </div>
 
-          {/* Right: video/image */}
+          {/* Right: image */}
           <div className="relative">
-            <div className="relative rounded-sm overflow-hidden aspect-[4/3] bg-gray-200">
-              {/* Replace with Next.js Image */}
-              <div className="w-full h-full bg-gradient-to-br from-gray-400 to-gray-500 flex items-center justify-center">
-                <div className="text-center text-gray-300">
-                  <svg viewBox="0 0 80 80" className="w-20 h-20 mx-auto mb-2 opacity-40">
-                    <circle cx="40" cy="28" r="18" fill="currentColor" />
-                    <path d="M8 72 Q8 48 40 46 Q72 48 72 72Z" fill="currentColor" />
-                  </svg>
-                  <p className="text-sm">Testimonial Image</p>
-                </div>
-              </div>
+            <div className="relative rounded-sm overflow-hidden aspect-[4/3]">
+              <Image
+                src="/Banner/reviews.png"
+                alt="Testimonial"
+                fill
+                className="object-cover"
+              />
 
               {/* Play button overlay */}
-              <button className="absolute inset-0 flex items-center justify-center group">
+              {/* <button className="absolute inset-0 flex items-center justify-center group">
                 <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-200">
                   <svg viewBox="0 0 24 24" className="w-6 h-6 text-(--theme-color) ml-1" fill="currentColor">
                     <path d="M8 5v14l11-7z" />
                   </svg>
                 </div>
-              </button>
+              </button> */}
             </div>
           </div>
         </div>

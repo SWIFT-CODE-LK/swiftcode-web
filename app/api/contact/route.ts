@@ -12,18 +12,21 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: Number(process.env.SMTP_PORT) || 587,
-      secure: process.env.SMTP_SECURE === "true",
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
-    });
+  const transporter = nodemailer.createTransport({
+    host: process.env.SMTP_HOST,
+    port: Number(process.env.SMTP_PORT) || 587,
+    secure: process.env.SMTP_SECURE === "true",
+    auth: {
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASS,
+    },
+    tls: {
+      rejectUnauthorized: false,
+    },
+  });
 
     await transporter.sendMail({
-      from: `"Consoel Contact Form" <${process.env.SMTP_USER}>`,
+      from: `"Swiftcode Contact Form" <${process.env.SMTP_USER}>`,
       to: process.env.SMTP_TO,
       replyTo: email,
       subject: `New Enquiry from ${name}${service ? ` — ${service}` : ""}`,
@@ -31,7 +34,7 @@ export async function POST(req: NextRequest) {
         <div style="font-family: Georgia, serif; max-width: 600px; margin: 0 auto; color: #111;">
           <div style="background: #0d2535; padding: 32px 40px;">
             <h1 style="color: #ffffff; font-size: 22px; margin: 0;">
-              CONS<span style="color: #DE4B21;">O</span>EL.
+              Swiftc<span style="color: #DE4B21;">O</span>de.
             </h1>
             <p style="color: rgba(255,255,255,0.5); font-size: 13px; margin: 6px 0 0;">
               New contact form submission

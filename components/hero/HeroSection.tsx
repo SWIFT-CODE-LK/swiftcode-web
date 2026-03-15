@@ -1,26 +1,30 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const slides = [
   {
-    tagline: "TRUSTED BUSINESS PARTNER.",
-    heading: "Provide Financial Solution Service.",
+    tagline: "INNOVATIVE SOFTWARE SOLUTIONS.",
+    heading: "Smart ERP & Business Systems.",
     description:
-      "It was popularised in the 1960s with the release sheets. We bring the right people together",
+      "Swiftcode develops powerful ERP and POS systems designed to streamline operations, automate processes, and help businesses manage their workflow efficiently.",
+    image: "/slideshow/hero1.png",
   },
   {
-    tagline: "EXPERT ADVISORY TEAM.",
-    heading: "Strategic Business Growth Partner.",
+    tagline: "MODERN DIGITAL DEVELOPMENT.",
+    heading: "Web & Mobile Application Experts.",
     description:
-      "We help businesses navigate complex financial landscapes with precision and confidence.",
+      "We build modern, scalable web and mobile applications that transform ideas into high-performance digital products for growing businesses.",
+    image: "/slideshow/hero2.png",
   },
   {
-    tagline: "PROVEN TRACK RECORD.",
-    heading: "Empowering Your Financial Future.",
+    tagline: "TECHNOLOGY FOR BUSINESS GROWTH.",
+    heading: "Custom Software That Scales.",
     description:
-      "Decades of experience combined with modern solutions to deliver results that matter.",
+      "From ERP platforms to custom software solutions, Swiftcode delivers reliable technology that improves productivity, efficiency, and long-term business growth.",
+    image: "/slideshow/hero3.png",
   },
 ];
 
@@ -40,7 +44,6 @@ export default function HeroSection() {
   const prev = () => goTo((current - 1 + slides.length) % slides.length);
   const next = () => goTo((current + 1) % slides.length);
 
-  // Auto-advance
   useEffect(() => {
     const timer = setInterval(next, 5000);
     return () => clearInterval(timer);
@@ -81,22 +84,15 @@ export default function HeroSection() {
                 : "opacity-100 translate-y-0"
             }`}
           >
-            {/* Tagline */}
             <p className="text-white/60 text-xs sm:text-sm font-semibold tracking-[0.2em] uppercase mb-5">
               {slide.tagline}
             </p>
-
-            {/* Heading */}
             <h1 className="text-white text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-[4rem] font-serif font-bold leading-[1.1] mb-6 lg:mb-8 max-w-xl">
               {slide.heading}
             </h1>
-
-            {/* Description */}
             <p className="text-white/60 text-base lg:text-lg leading-relaxed mb-10 max-w-md">
               {slide.description}
             </p>
-
-            {/* CTA */}
             <Link
               href="/services"
               className="inline-flex items-center gap-3 bg-(--theme-color) hover:opacity-90 text-white font-semibold text-sm px-7 py-4 transition-all duration-200 hover:shadow-xl hover:shadow-orange-500/30 hover:gap-4"
@@ -112,9 +108,8 @@ export default function HeroSection() {
               animating ? "opacity-0 scale-95" : "opacity-100 scale-100"
             }`}
           >
-            {/* Circular brushstroke frame */}
             <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-[420px] lg:h-[420px] xl:w-[480px] xl:h-[480px]">
-              {/* Brushstroke circle - SVG decoration */}
+              {/* Brushstroke circle SVG decoration */}
               <svg
                 viewBox="0 0 480 480"
                 className="absolute inset-0 w-full h-full"
@@ -145,34 +140,16 @@ export default function HeroSection() {
                 />
               </svg>
 
-              {/* Placeholder portrait — replace with <Image> from next/image */}
-              <div className="absolute inset-6 rounded-full overflow-hidden bg-gradient-to-b from-[#1a4060] to-[#0d2535] flex items-end justify-center">
-                {/* Replace this div with your actual Next.js Image component */}
-                <div className="w-full h-full flex items-center justify-center">
-                  <div className="text-center">
-                    {/* Silhouette placeholder */}
-                    <svg
-                      viewBox="0 0 200 280"
-                      className="w-40 h-56 opacity-40 mx-auto"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <circle
-                        cx="100"
-                        cy="75"
-                        r="45"
-                        fill="rgba(255,255,255,0.3)"
-                      />
-                      <path
-                        d="M20 280 Q20 160 100 155 Q180 160 180 280Z"
-                        fill="rgba(255,255,255,0.3)"
-                      />
-                    </svg>
-                    <p className="text-white/30 text-xs mt-2">
-                      Portrait Image Here
-                    </p>
-                  </div>
-                </div>
+              {/* Portrait image — changes with each slide */}
+              <div className="absolute inset-6 rounded-full overflow-hidden">
+                <Image
+                  key={slide.image}
+                  src={slide.image}
+                  alt={slide.heading}
+                  fill
+                  className="object-cover"
+                  priority
+                />
               </div>
 
               {/* Decorative dots */}

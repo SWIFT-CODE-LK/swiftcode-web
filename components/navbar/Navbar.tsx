@@ -98,11 +98,11 @@ export default function Navbar() {
       </header>
 
       {/* Mobile Menu */}
-      {/* <MobileMenu
+      <MobileMenu
         items={NAV_ITEMS}
         isOpen={mobileOpen}
         onClose={() => setMobileOpen(false)}
-      /> */}
+      />
     </>
   );
 }

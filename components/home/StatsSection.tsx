@@ -2,9 +2,9 @@
 import { useEffect, useRef, useState } from "react";
 
 const stats = [
-  { value: 8567, suffix: "", label: "Completed Cases" },
+  { value: 10, suffix: "", label: "Completed Cases" },
   { value: 3, suffix: "+", label: "Happy Clients" },
-  { value: 785, suffix: "", label: "Skilled People" },
+  { value: 10, suffix: "+", label: "Skilled People" },
 ];
 
 function useCounter(target: number, duration = 2000, start: boolean) {

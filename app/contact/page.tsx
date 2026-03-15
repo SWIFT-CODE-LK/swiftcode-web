@@ -19,7 +19,7 @@ const contactCards = [
       </svg>
     ),
     title: "Address",
-    lines: ["7 Green Lake Street Crawfordsville,", "IN 47933"],
+    lines: ["Athurugiriya,", "Sri lanka"],
   },
   {
     icon: (
@@ -35,7 +35,7 @@ const contactCards = [
       </svg>
     ),
     title: "Email Us",
-    lines: ["Consoel@gmail.com", "helloyou@gmail.com"],
+    lines: ["swiftcode.srilanka@gmail.com"],
   },
   {
     icon: (
@@ -50,7 +50,7 @@ const contactCards = [
       </svg>
     ),
     title: "Call Now",
-    lines: ["+1 800 123 456 789", "+1 800 123 654 987"],
+    lines: ["+94 70 490 0850", "+94 76 621 6791"],
   },
 ];
 
@@ -148,8 +148,7 @@ export default function ContactPage() {
             Contact Us
           </h1>
           <p className="text-white/50 text-base max-w-xl leading-relaxed">
-            Have a question or ready to start a project? We would love to hear
-            from you.
+            Ready to start your project? Get in touch today.
           </p>
           <div className="flex items-center gap-2 mt-6 text-sm">
             <Link
@@ -210,10 +209,10 @@ export default function ContactPage() {
             />
             <div className="absolute bottom-6 left-6 bg-white shadow-lg px-5 py-3 rounded-sm border-l-4 border-(--theme-color)">
               <p className="font-bold text-sm text-[#0d2535]">
-                Consoel Head Office
+                Athurugiriya
               </p>
               <p className="text-gray-500 text-xs mt-0.5">
-                7 Green Lake Street, Crawfordsville, IN 47933
+                Sri lanka
               </p>
             </div>
           </div>
@@ -225,8 +224,7 @@ export default function ContactPage() {
                 Have Any Question?
               </h2>
               <p className="text-gray-500 text-sm leading-relaxed">
-                It is a long established fact that a reader will be distracted
-                content of a page when looking.
+                Swiftcode ensures every detail keeps your users engaged and focused.
               </p>
             </div>
 

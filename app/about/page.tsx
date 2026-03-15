@@ -1,45 +1,45 @@
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/Footer";
 import Link from "next/link";
+import Image from "next/image";
 import MissionVisionSection from "../../components/home/MissionVisionSection";
 
 const values = [
   {
-    title: "Client First",
-    description: "Every decision we make starts with understanding what truly serves our clients' best interests.",
+    title: "Innovation",
+    description: "We embrace creativity and continuously explore new technologies to deliver cutting-edge software solutions that solve real business problems.",
     icon: "★",
   },
   {
-    title: "Integrity",
-    description: "We hold ourselves to the highest ethical standards in every engagement, big or small.",
+    title: "Customer Focus",
+    description: "Our solutions are designed with our clients in mind, ensuring their business goals are met and their success is our priority.",
     icon: "◈",
   },
   {
-    title: "Innovation",
-    description: "We continuously evolve our methods and technology to deliver forward-thinking solutions.",
+    title: "Integrity",
+    description: "We operate with honesty, transparency, and accountability in every project, building trust with our clients and partners.",
     icon: "◎",
   },
   {
-    title: "Excellence",
-    description: "We never settle for good enough — every deliverable reflects our commitment to quality.",
+    title: "Continuous Learning",
+    description: "We invest in learning and adapting to new technologies, methodologies, and industry trends to stay ahead in the software world.",
     icon: "◆",
   },
 ];
 
 const team = [
-  { name: "Robert Anderson", role: "CEO & Founder", initials: "RA", experience: "20+ years" },
-  { name: "Michael Davies", role: "Chief Financial Advisor", initials: "MD", experience: "15+ years" },
-  { name: "Sarah Williams", role: "Strategy Director", initials: "SW", experience: "12+ years" },
-  { name: "James Hartley", role: "Technology Lead", initials: "JH", experience: "10+ years" },
+  { name: "Seshan Nethmike", role: "CEO & Founder", image: "/employees/seshan.jpeg", experience: "20+ years" },
+  { name: "Sahiru Lakshan", role: "CTO", image: "/employees/sahiru.jpeg", experience: "15+ years" },
+  { name: "Thisara Tharinda", role: "System Administrator", image: "/employees/thisara.jpeg", experience: "12+ years" },
 ];
 
 const milestones = [
-  { year: "2004", event: "Founded in New York with a team of 5 consultants" },
-  { year: "2008", event: "Expanded to 3 offices across the US East Coast" },
-  { year: "2012", event: "Launched digital transformation division" },
-  { year: "2018", event: "Reached 300+ completed client engagements" },
-  { year: "2022", event: "Global expansion with offices in Europe and Asia" },
-  { year: "2024", event: "Crossed 785 skilled professionals worldwide" },
+  { id:1, year: "2022", event: "Founded Swiftcode" },
+  { id:2, year: "2023", event: "Website Launch" },
+  { id:3, year: "2023", event: "ERP System Delivered" },
+  { id:4, year: "2024", event: "Mobile Applications Released" },
+  { id:5, year: "2024", event: "POS Solutions Launched" },
+  { id:6, year: "2025", event: "Team Expansion" },
 ];
 
 export default function AboutPage() {
@@ -59,10 +59,10 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 xl:px-20">
           <p className="text-(--theme-color) text-xs font-bold tracking-[0.2em] uppercase mb-3">Who We Are</p>
           <h1 className="font-serif text-4xl lg:text-6xl font-bold text-white mb-5 max-w-2xl leading-tight">
-            About Consoel Consultancy
+            About Swiftcode
           </h1>
           <p className="text-white/50 text-base max-w-xl leading-relaxed">
-            For over 28 years we have partnered with businesses to deliver strategic, financial, and technology solutions that drive lasting growth.
+            Since 2022, Swiftcode has been empowering businesses with smart ERP, POS, web, and mobile solutions that drive growth and digital transformation.
           </p>
           <div className="flex items-center gap-2 mt-6 text-sm">
             <Link href="/" className="text-white/50 hover:text-orange-400 transition-colors">Home</Link>
@@ -73,7 +73,6 @@ export default function AboutPage() {
       </section>
 
       <MissionVisionSection/>
-
 
       {/* Our Values */}
       <section className="py-20 lg:py-28 bg-white">
@@ -112,7 +111,7 @@ export default function AboutPage() {
             <div className="space-y-8 lg:space-y-0">
               {milestones.map((m, idx) => (
                 <div
-                  key={m.year}
+                  key={m.id}
                   className={"relative lg:grid lg:grid-cols-2 lg:gap-10 " + (idx % 2 === 0 ? "" : "")}
                 >
                   {idx % 2 === 0 ? (
@@ -152,16 +151,21 @@ export default function AboutPage() {
             <p className="text-orange-500 text-xs font-bold tracking-[0.2em] uppercase mb-3">Team Members</p>
             <h2 className="font-serif text-4xl lg:text-5xl font-bold text-[#0d2535]">We Have Skilled People</h2>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid sm:grid-cols-3 gap-8 max-w-3xl mx-auto">
             {team.map((member) => (
               <div key={member.name} className="flex flex-col items-center text-center group">
                 <div className="relative mb-5">
-                  <div className="w-36 h-36 rounded-full bg-gray-100 border-4 border-gray-100 overflow-hidden shadow-md group-hover:border-orange-500 transition-colors duration-300 flex items-center justify-center">
-                    <span className="font-serif text-2xl font-bold text-gray-400">{member.initials}</span>
+                  <div className="w-36 h-36 rounded-full border-4 border-gray-100 overflow-hidden shadow-md group-hover:border-orange-500 transition-colors duration-300 relative">
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      fill
+                      className="object-cover"
+                    />
                   </div>
-                  <div className="absolute -bottom-2 -right-2 bg-(--theme-color) text-white text-xs font-bold px-2 py-1">
+                  {/* <div className="absolute -bottom-2 -right-2 bg-(--theme-color) text-white text-xs font-bold px-2 py-1">
                     {member.experience}
-                  </div>
+                  </div> */}
                 </div>
                 <h3 className="font-serif text-lg font-bold text-[#0d2535] mb-1">{member.name}</h3>
                 <p className="text-(--theme-color) text-sm font-semibold">{member.role}</p>
@@ -178,9 +182,9 @@ export default function AboutPage() {
         </svg>
         <div className="relative max-w-7xl mx-auto px-6 md:px-10 lg:px-16 xl:px-20 flex flex-col lg:flex-row items-center justify-between gap-8">
           <div>
-            <p className="text-orange-400 text-xs font-bold tracking-widest uppercase mb-3">Ready to grow?</p>
+            <p className="text-orange-400 text-xs font-bold tracking-widest uppercase mb-3">Grow Smarter with Swiftcode.</p>
             <h2 className="font-serif text-3xl lg:text-4xl font-bold text-white max-w-xl">
-              Let us help your business reach its full potential.
+              Empowering your business with smart, scalable technology solutions.
             </h2>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 flex-shrink-0">

@@ -15,14 +15,10 @@ export default function MissionVisionSection() {
 
             <h3 className="font-serif text-2xl font-bold text-(--theme-color) mb-5 relative z-10">Our Mission</h3>
             <p className="text-white/70 text-sm leading-relaxed mb-6 relative z-10">
-              Lorem Ipsum is simply dummy text of the printing and typesetting has been the
-              industry's standard dummy text ever since unknown printer took a galley of type
-              and scrambled it to make a type specimen book. It has survived not only five
-              centuries, but also the leap into electronic typesetting.
+              To empower businesses with innovative and scalable software solutions, transforming ideas into high-performance ERP, POS, web, and mobile applications.
             </p>
             <p className="text-white font-bold text-sm leading-relaxed relative z-10">
-              Lorem Ipsum is simply dummy text of the printing has been the industry standard
-              dummy text ever since unknown printer took galley.
+              We strive to help companies improve efficiency, automate processes, and achieve sustainable growth through smart and reliable technology.
             </p>
           </div>
 
@@ -30,14 +26,10 @@ export default function MissionVisionSection() {
           <div className="bg-white rounded-sm p-10 border border-gray-100">
             <h3 className="font-serif text-2xl font-bold text-(--theme-color) mb-5">Our Vision</h3>
             <p className="text-[#0d2535] font-bold text-sm leading-relaxed mb-5">
-              Lorem Ipsum is simply dummy text of the printing has been the industry standard
-              dummy text ever since unknown printer took galley.
+              To be a leading software company in Sri Lanka and beyond, recognized for delivering future-ready digital solutions.
             </p>
             <p className="text-gray-500 text-sm leading-relaxed">
-              Lorem Ipsum is simply dummy text of the printing and typesetting has been the
-              industry's standard dummy text ever since the 1500 when unknown printer took a
-              galley of type and scrambled it to make a type specimen book. It has survived
-              not only five centuries, but also the leap into electronic typesetting.
+              We aim to enable businesses to thrive in an ever-evolving technological landscape with innovation, reliability, and excellence at the core of everything we do.
             </p>
           </div>
         </div>

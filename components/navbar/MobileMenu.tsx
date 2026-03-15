@@ -1,15 +1,16 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import { navItems } from "../../lib/navData";
 import { ChevronDown, X } from "lucide-react";
+import type { NavItem } from "../../types/nav";
 
 interface MobileMenuProps {
+  items: NavItem[];
   isOpen: boolean;
   onClose: () => void;
 }
 
-export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
+export default function MobileMenu({ items, isOpen, onClose }: MobileMenuProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
@@ -33,14 +34,17 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           <span className="text-white font-bold text-xl tracking-wide">
             CONS<span className="text-orange-500">O</span>EL.
           </span>
-          <button onClick={onClose} className="text-white/70 hover:text-white transition-colors p-1">
+          <button
+            onClick={onClose}
+            className="text-white/70 hover:text-white transition-colors p-1"
+          >
             <X size={22} />
           </button>
         </div>
 
         {/* Nav items */}
         <nav className="flex-1 overflow-y-auto py-4">
-          {navItems.map((item, idx) => (
+          {items.map((item, idx) => (
             <div key={item.label}>
               {item.dropdown ? (
                 <>
@@ -51,7 +55,9 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                     {item.label}
                     <ChevronDown
                       size={16}
-                      className={`transition-transform duration-200 ${openIndex === idx ? "rotate-180" : ""}`}
+                      className={`transition-transform duration-200 ${
+                        openIndex === idx ? "rotate-180" : ""
+                      }`}
                     />
                   </button>
                   <div

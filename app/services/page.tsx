@@ -64,8 +64,7 @@ const services = [
     description:
       "Scalable, performant web applications built with modern frameworks. From customer portals to internal tools, we deliver solutions that grow with your business.",
     features: [
-      "React / Next.js Frontend",
-      "Node.js / Python Backend",
+      "Full-Stack Development",
       "REST & GraphQL APIs",
       "Cloud Deployment (AWS/GCP)",
       "CI/CD Pipeline Setup",
@@ -91,7 +90,6 @@ const services = [
     description:
       "Native and cross-platform mobile apps that deliver exceptional user experiences. We build apps for iOS, Android, and both using React Native and Flutter.",
     features: [
-      "React Native / Flutter",
       "Native iOS & Android",
       "Push Notifications",
       "Offline-first Architecture",
@@ -232,8 +230,8 @@ export default function ServicesPage() {
         <div className="absolute -right-16 top-1/2 -translate-y-1/2 w-56 h-56 bg-[#0d2535] rounded-full opacity-20" />
         <div className="relative max-w-7xl mx-auto px-6 md:px-10 lg:px-16 xl:px-20 flex flex-col lg:flex-row items-center justify-between gap-6">
           <div>
-            <p className="text-white/80 text-sm font-bold tracking-widest uppercase mb-2">Ready to start?</p>
-            <h2 className="font-serif text-3xl lg:text-4xl font-bold text-white">Let us build something great together.</h2>
+            <p className="text-white/80 text-sm font-bold tracking-widest uppercase mb-2">Let Swiftcode</p>
+            <h2 className="font-serif text-3xl lg:text-4xl font-bold text-white">Transform your ideas into powerful software.</h2>
           </div>
           <Link href="/contact" className="flex-shrink-0 bg-white hover:bg-gray-100 text-(--theme-color) font-bold px-8 py-4 transition-all duration-200 hover:shadow-lg text-sm whitespace-nowrap">
             Get In Touch →
