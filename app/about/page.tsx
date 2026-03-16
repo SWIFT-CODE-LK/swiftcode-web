@@ -34,12 +34,12 @@ const team = [
 ];
 
 const milestones = [
-  { id:1, year: "2022", event: "Founded Swiftcode" },
-  { id:2, year: "2023", event: "Website Launch" },
-  { id:3, year: "2023", event: "ERP System Delivered" },
-  { id:4, year: "2024", event: "Mobile Applications Released" },
-  { id:5, year: "2024", event: "POS Solutions Launched" },
-  { id:6, year: "2025", event: "Team Expansion" },
+  { id: 1, year: "2022", event: "Founded Swiftcode" },
+  { id: 2, year: "2023", event: "Website Launch" },
+  { id: 3, year: "2023", event: "ERP System Delivered" },
+  { id: 4, year: "2024", event: "Mobile Applications Released" },
+  { id: 5, year: "2024", event: "POS Solutions Launched" },
+  { id: 6, year: "2025", event: "Team Expansion" },
 ];
 
 export default function AboutPage() {
@@ -72,7 +72,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <MissionVisionSection/>
+      <MissionVisionSection />
 
       {/* Our Values */}
       <section className="py-20 lg:py-28 bg-white">
@@ -105,42 +105,62 @@ export default function AboutPage() {
             <p className="text-orange-500 text-xs font-bold tracking-[0.2em] uppercase mb-3">Our Journey</p>
             <h2 className="font-serif text-4xl lg:text-5xl font-bold text-[#0d2535]">Company Milestones</h2>
           </div>
-          <div className="relative">
-            {/* Central line */}
-            <div className="absolute left-1/2 -translate-x-px top-0 bottom-0 w-0.5 bg-gray-200 hidden lg:block" />
-            <div className="space-y-8 lg:space-y-0">
+
+          {/* ── Mobile: left-aligned vertical timeline ── */}
+          <div className="lg:hidden relative">
+            {/* Vertical line — starts at 8px from left (center of dot) */}
+            <div className="absolute left-[7px] top-0 bottom-0 w-0.5 bg-gray-200" />
+            <div className="space-y-8">
               {milestones.map((m, idx) => (
-                <div
-                  key={m.id}
-                  className={"relative lg:grid lg:grid-cols-2 lg:gap-10 " + (idx % 2 === 0 ? "" : "")}
-                >
-                  {idx % 2 === 0 ? (
-                    <>
-                      <div className="lg:text-right lg:pr-10 pb-8 lg:pb-12">
-                        <div className="inline-block bg-(--theme-color) text-white font-bold text-sm px-4 py-1.5 mb-3">
-                          {m.year}
-                        </div>
-                        <p className="text-gray-600 text-sm leading-relaxed">{m.event}</p>
-                      </div>
-                      <div className="hidden lg:block" />
-                    </>
-                  ) : (
-                    <>
-                      <div className="hidden lg:block" />
-                      <div className="lg:pl-10 pb-8 lg:pb-12">
-                        <div className="inline-block bg-[#0d2535] text-white font-bold text-sm px-4 py-1.5 mb-3">
-                          {m.year}
-                        </div>
-                        <p className="text-gray-600 text-sm leading-relaxed">{m.event}</p>
-                      </div>
-                    </>
-                  )}
-                  {/* Dot on timeline */}
-                  <div className="absolute left-1/2 top-3 -translate-x-1/2 w-4 h-4 rounded-full bg-orange-500 border-4 border-white shadow hidden lg:block" />
+                <div key={m.id} className="relative flex items-start gap-4">
+                  {/* Dot — fixed width so content always aligns */}
+                  <div className="flex-shrink-0 mt-1.5 w-4 h-4 rounded-full bg-orange-500 border-4 border-white shadow relative z-10" />
+                  <div>
+                    <div
+                      className={`inline-block text-white font-bold text-sm px-4 py-1.5 mb-2 ${
+                        idx % 2 === 0 ? "bg-[var(--theme-color,#f97316)]" : "bg-[#0d2535]"
+                      }`}
+                    >
+                      {m.year}
+                    </div>
+                    <p className="text-gray-600 text-sm leading-relaxed">{m.event}</p>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
+
+          {/* ── Desktop: alternating two-column timeline ── */}
+          <div className="hidden lg:block relative">
+            <div className="absolute left-1/2 -translate-x-px top-0 bottom-0 w-0.5 bg-gray-200" />
+            {milestones.map((m, idx) => (
+              <div key={m.id} className="relative grid grid-cols-2 gap-10">
+                {idx % 2 === 0 ? (
+                  <>
+                    <div className="text-right pr-10 pb-12">
+                      <div className="inline-block bg-[var(--theme-color,#f97316)] text-white font-bold text-sm px-4 py-1.5 mb-3">
+                        {m.year}
+                      </div>
+                      <p className="text-gray-600 text-sm leading-relaxed">{m.event}</p>
+                    </div>
+                    <div />
+                  </>
+                ) : (
+                  <>
+                    <div />
+                    <div className="pl-10 pb-12">
+                      <div className="inline-block bg-[#0d2535] text-white font-bold text-sm px-4 py-1.5 mb-3">
+                        {m.year}
+                      </div>
+                      <p className="text-gray-600 text-sm leading-relaxed">{m.event}</p>
+                    </div>
+                  </>
+                )}
+                <div className="absolute left-1/2 top-3 -translate-x-1/2 w-4 h-4 rounded-full bg-orange-500 border-4 border-white shadow" />
+              </div>
+            ))}
+          </div>
+
         </div>
       </section>
 
@@ -163,9 +183,6 @@ export default function AboutPage() {
                       className="object-cover"
                     />
                   </div>
-                  {/* <div className="absolute -bottom-2 -right-2 bg-(--theme-color) text-white text-xs font-bold px-2 py-1">
-                    {member.experience}
-                  </div> */}
                 </div>
                 <h3 className="font-serif text-lg font-bold text-[#0d2535] mb-1">{member.name}</h3>
                 <p className="text-(--theme-color) text-sm font-semibold">{member.role}</p>

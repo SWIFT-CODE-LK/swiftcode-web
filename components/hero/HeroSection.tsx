@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -32,41 +32,50 @@ export default function HeroSection() {
   const [current, setCurrent] = useState(0);
   const [animating, setAnimating] = useState(false);
 
-  const goTo = (idx: number) => {
-    if (animating) return;
-    setAnimating(true);
-    setTimeout(() => {
-      setCurrent(idx);
-      setAnimating(false);
-    }, 300);
-  };
+  const goTo = useCallback(
+    (idx: number) => {
+      if (animating) return;
+      setAnimating(true);
+      setTimeout(() => {
+        setCurrent(idx);
+        setAnimating(false);
+      }, 300);
+    },
+    [animating],
+  );
 
-  const prev = () => goTo((current - 1 + slides.length) % slides.length);
-  const next = () => goTo((current + 1) % slides.length);
+  const prev = useCallback(
+    () => goTo((current - 1 + slides.length) % slides.length),
+    [current, goTo],
+  );
+  const next = useCallback(
+    () => goTo((current + 1) % slides.length),
+    [current, goTo],
+  );
 
   useEffect(() => {
     const timer = setInterval(next, 5000);
     return () => clearInterval(timer);
-  }, [current]);
+  }, [next]);
 
   const slide = slides[current];
 
   return (
-    <section className="relative min-h-screen bg-[#0d2535] flex items-center overflow-hidden">
-      {/* Background subtle texture */}
-      <div className="absolute inset-0 opacity-5">
+    <section className="relative min-h-screen bg-[#0d2535] flex flex-col justify-center overflow-hidden">
+      {/* Background gradient */}
+      <div className="absolute inset-0 pointer-events-none">
         <div
           className="absolute inset-0"
           style={{
             backgroundImage:
-              "radial-gradient(circle at 20% 50%, #1a4a6b 0%, transparent 60%), radial-gradient(circle at 80% 20%, #0a1f2e 0%, transparent 50%)",
+              "radial-gradient(circle at 20% 50%, rgba(26,74,107,0.4) 0%, transparent 60%), radial-gradient(circle at 80% 20%, rgba(10,31,46,0.5) 0%, transparent 50%)",
           }}
         />
       </div>
 
       {/* Grid lines decoration */}
       <div
-        className="absolute inset-0 opacity-[0.03]"
+        className="absolute inset-0 opacity-[0.03] pointer-events-none"
         style={{
           backgroundImage:
             "linear-gradient(0deg, transparent 24%, rgba(255,255,255,.5) 25%, rgba(255,255,255,.5) 26%, transparent 27%, transparent 74%, rgba(255,255,255,.5) 75%, rgba(255,255,255,.5) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(255,255,255,.5) 25%, rgba(255,255,255,.5) 26%, transparent 27%, transparent 74%, rgba(255,255,255,.5) 75%, rgba(255,255,255,.5) 76%, transparent 77%, transparent)",
@@ -74,46 +83,23 @@ export default function HeroSection() {
         }}
       />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-20 lg:pt-0">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-0 items-center min-h-screen lg:min-h-0 py-24 lg:py-32">
-          {/* Left: Text Content */}
+      {/* Main content */}
+      <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-24 lg:pt-0 lg:pb-0 lg:min-h-screen lg:flex lg:items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-8 items-center w-full lg:py-32">
+          {/* ── Image (shows FIRST on mobile, second column on desktop) ── */}
           <div
-            className={`transition-all duration-300 ${
-              animating
-                ? "opacity-0 translate-y-4"
-                : "opacity-100 translate-y-0"
-            }`}
-          >
-            <p className="text-white/60 text-xs sm:text-sm font-semibold tracking-[0.2em] uppercase mb-5">
-              {slide.tagline}
-            </p>
-            <h1 className="text-white text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-[4rem] font-serif font-bold leading-[1.1] mb-6 lg:mb-8 max-w-xl">
-              {slide.heading}
-            </h1>
-            <p className="text-white/60 text-base lg:text-lg leading-relaxed mb-10 max-w-md">
-              {slide.description}
-            </p>
-            <Link
-              href="/services"
-              className="inline-flex items-center gap-3 bg-(--theme-color) hover:opacity-90 text-white font-semibold text-sm px-7 py-4 transition-all duration-200 hover:shadow-xl hover:shadow-orange-500/30 hover:gap-4"
-            >
-              Explore More
-              <span className="flex items-center text-xs">»</span>
-            </Link>
-          </div>
-
-          {/* Right: Portrait image area */}
-          <div
-            className={`relative flex justify-center lg:justify-end items-end transition-all duration-500 ${
+            className={`order-1 lg:order-2 flex justify-center lg:justify-end items-center transition-all duration-500 ${
               animating ? "opacity-0 scale-95" : "opacity-100 scale-100"
             }`}
           >
-            <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-[420px] lg:h-[420px] xl:w-[480px] xl:h-[480px]">
-              {/* Brushstroke circle SVG decoration */}
+            {/* Responsive size: smaller on mobile, larger on desktop */}
+            <div className="relative w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-[400px] lg:h-[400px] xl:w-[460px] xl:h-[460px]">
+              {/* Brushstroke circle SVG */}
               <svg
                 viewBox="0 0 480 480"
                 className="absolute inset-0 w-full h-full"
                 xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
               >
                 <ellipse
                   cx="240"
@@ -140,7 +126,7 @@ export default function HeroSection() {
                 />
               </svg>
 
-              {/* Portrait image — changes with each slide */}
+              {/* Portrait image */}
               <div className="absolute inset-6 rounded-full overflow-hidden">
                 <Image
                   key={slide.image}
@@ -153,57 +139,115 @@ export default function HeroSection() {
               </div>
 
               {/* Decorative dots */}
-              <div className="absolute -bottom-4 -right-4 w-20 h-20 opacity-20">
+              <div
+                className="absolute -bottom-3 -right-3 w-16 h-16 sm:-bottom-4 sm:-right-4 sm:w-20 sm:h-20 opacity-20 pointer-events-none"
+                aria-hidden="true"
+              >
                 {[...Array(16)].map((_, i) => (
                   <div
                     key={i}
                     className="absolute w-1.5 h-1.5 rounded-full bg-orange-400"
                     style={{
-                      left: `${(i % 4) * 24}px`,
-                      top: `${Math.floor(i / 4) * 24}px`,
+                      left: `${(i % 4) * 20}px`,
+                      top: `${Math.floor(i / 4) * 20}px`,
                     }}
                   />
                 ))}
               </div>
             </div>
           </div>
+
+          {/* ── Text content (shows SECOND on mobile, first column on desktop) ── */}
+          <div
+            className={`order-2 lg:order-1 text-center lg:text-left transition-all duration-300 ${
+              animating
+                ? "opacity-0 translate-y-4"
+                : "opacity-100 translate-y-0"
+            }`}
+          >
+            <p className="text-white/60 text-[10px] sm:text-xs font-semibold tracking-[0.2em] uppercase mb-4">
+              {slide.tagline}
+            </p>
+
+            <h1 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-[3.2rem] xl:text-[3.8rem] font-serif font-bold leading-[1.1] mb-5 lg:mb-7 mx-auto lg:mx-0 max-w-xl">
+              {slide.heading}
+            </h1>
+
+            <p className="text-white/60 text-sm sm:text-base lg:text-lg leading-relaxed mb-8 mx-auto lg:mx-0 max-w-md lg:max-w-none">
+              {slide.description}
+            </p>
+
+            <div className="flex justify-center lg:justify-start">
+              <Link
+                href="/services"
+                className="inline-flex items-center gap-3 bg-[var(--theme-color,#f97316)] hover:opacity-90 text-white font-semibold text-sm px-6 sm:px-7 py-3.5 sm:py-4 transition-all duration-200 hover:shadow-xl hover:shadow-orange-500/30 hover:gap-4"
+              >
+                Explore More
+                <span className="flex items-center text-xs">»</span>
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Prev / Next arrows */}
+      {/* ── Prev / Next arrows: side-mounted on desktop only ── */}
       <button
         onClick={prev}
         aria-label="Previous slide"
-        className="absolute left-4 lg:left-6 top-1/2 -translate-y-1/2 w-10 h-10 lg:w-12 lg:h-12 border border-white/20 hover:border-orange-500 text-white/50 hover:text-orange-400 flex items-center justify-center transition-all duration-200 hover:bg-orange-500/10"
+        className="hidden lg:flex absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 border border-white/20 hover:border-orange-500 text-white/50 hover:text-orange-400 items-center justify-center transition-all duration-200 hover:bg-orange-500/10"
       >
         <ChevronLeft size={20} />
       </button>
       <button
         onClick={next}
         aria-label="Next slide"
-        className="absolute right-4 lg:right-6 top-1/2 -translate-y-1/2 w-10 h-10 lg:w-12 lg:h-12 border border-white/20 hover:border-orange-500 text-white/50 hover:text-orange-400 flex items-center justify-center transition-all duration-200 hover:bg-orange-500/10"
+        className="hidden lg:flex absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 border border-white/20 hover:border-orange-500 text-white/50 hover:text-orange-400 items-center justify-center transition-all duration-200 hover:bg-orange-500/10"
       >
         <ChevronRight size={20} />
       </button>
 
-      {/* Slide dots */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-2">
-        {slides.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => goTo(i)}
-            className={`transition-all duration-300 rounded-full ${
-              i === current
-                ? "w-6 h-2 bg-orange-500"
-                : "w-2 h-2 bg-white/30 hover:bg-white/60"
-            }`}
-            aria-label={`Go to slide ${i + 1}`}
-          />
-        ))}
+      {/* ── Bottom controls: arrows + dots together on mobile ── */}
+      <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-3">
+        {/* Prev arrow — mobile only */}
+        <button
+          onClick={prev}
+          aria-label="Previous slide"
+          className="lg:hidden w-9 h-9 border border-white/20 hover:border-orange-500 text-white/50 hover:text-orange-400 flex items-center justify-center transition-all duration-200 hover:bg-orange-500/10"
+        >
+          <ChevronLeft size={16} />
+        </button>
+
+        {/* Dots */}
+        <div className="flex items-center gap-2">
+          {slides.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => goTo(i)}
+              className={`transition-all duration-300 rounded-full ${
+                i === current
+                  ? "w-6 h-2 bg-orange-500"
+                  : "w-2 h-2 bg-white/30 hover:bg-white/60"
+              }`}
+              aria-label={`Go to slide ${i + 1}`}
+            />
+          ))}
+        </div>
+
+        {/* Next arrow — mobile only */}
+        <button
+          onClick={next}
+          aria-label="Next slide"
+          className="lg:hidden w-9 h-9 border border-white/20 hover:border-orange-500 text-white/50 hover:text-orange-400 flex items-center justify-center transition-all duration-200 hover:bg-orange-500/10"
+        >
+          <ChevronRight size={16} />
+        </button>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 right-8 hidden lg:flex flex-col items-center gap-2">
+      {/* ── Scroll indicator (desktop only) ── */}
+      <div
+        className="absolute bottom-8 right-8 hidden lg:flex flex-col items-center gap-2"
+        aria-hidden="true"
+      >
         <div className="w-px h-12 bg-gradient-to-b from-white/30 to-transparent" />
         <span className="text-white/30 text-[10px] tracking-[0.2em] uppercase rotate-90 origin-center translate-y-4">
           scroll
