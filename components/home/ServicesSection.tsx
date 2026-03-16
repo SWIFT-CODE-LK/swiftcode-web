@@ -54,7 +54,7 @@ export default function ServicesSection() {
             Our Services
           </p>
           <h2 className="font-serif text-4xl lg:text-5xl font-bold text-white">
-            All Consoel Solution
+           Solutions
           </h2>
         </div>
 
