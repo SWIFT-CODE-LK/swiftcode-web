@@ -13,12 +13,12 @@ export async function POST(req: NextRequest) {
     }
 
   const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: Number(process.env.SMTP_PORT) || 587,
-    secure: process.env.SMTP_SECURE === "true",
+    host: env.SMTP_HOST,
+    port: Number(env.SMTP_PORT) || 587,
+    secure: env.SMTP_SECURE === "true",
     auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS,
+      user: env.SMTP_USER,
+      pass: env.SMTP_PASS,
     },
     tls: {
       rejectUnauthorized: false,
@@ -26,8 +26,8 @@ export async function POST(req: NextRequest) {
   });
 
     await transporter.sendMail({
-      from: `"Swiftcode Contact Form" <${process.env.SMTP_USER}>`,
-      to: process.env.SMTP_TO,
+      from: `"Swiftcode Contact Form" <${env.SMTP_USER}>`,
+      to: env.SMTP_TO,
       replyTo: email,
       subject: `New Enquiry from ${name}${service ? ` — ${service}` : ""}`,
       html: `
