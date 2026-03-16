@@ -148,7 +148,7 @@ export default function Footer() {
             Copyright © {new Date().getFullYear()} // All Right Reserved by{" "}
             <Link
               href="/"
-              className="text-orange-400 hover:text-orange-300 transition-colors"
+              className="text-(--theme-color) hover:text-orange-300 transition-colors"
             >
               SwiftCode.
             </Link>

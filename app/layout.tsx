@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Playfair_Display, DM_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "../components/navbar/Navbar";
+import BackToTop from "../components/BacktoTop";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -18,7 +19,7 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   title: "SWIFTCODE",
   description:
-    "Consoel provides expert financial consulting, business strategy, and investment planning services.",
+    "Swiftcode provides expert ERP, POS, web, and mobile software solutions for growing businesses.",
 };
 
 export default function RootLayout({
@@ -28,7 +29,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${playfair.variable} ${dmSans.variable}`}>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        {children}
+        <BackToTop />
+      </body>
     </html>
   );
 }
