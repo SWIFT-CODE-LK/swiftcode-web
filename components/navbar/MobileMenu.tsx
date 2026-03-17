@@ -3,6 +3,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { ChevronDown, X } from "lucide-react";
 import type { NavItem } from "../../types/nav";
+import Logo from "./Logo";
 
 interface MobileMenuProps {
   items: NavItem[];
@@ -31,9 +32,7 @@ export default function MobileMenu({ items, isOpen, onClose }: MobileMenuProps) 
       >
         {/* Header */}
         <div className="flex items-center justify-between px-5 py-5 border-b border-white/10">
-          <span className="text-white font-bold text-xl tracking-wide">
-            CONS<span className="text-orange-500">O</span>EL.
-          </span>
+          <Logo/>
           <button
             onClick={onClose}
             className="text-white/70 hover:text-white transition-colors p-1"

@@ -31,7 +31,7 @@ const contactDetails = [
     ),
     label: "Email",
     value: "swiftcode.srilanka@gmail.com",
-    href: "mailto:hello@swiftcode.com",
+    href: "mailto:swiftcode.srilanka@gmail.com",
   },
   // {
   //   icon: (
@@ -66,7 +66,7 @@ export default function Footer() {
             </p>
             {/* Social icons */}
             <div className="flex items-center gap-3">
-              {["f", "t", "in", "g+"].map((s) => (
+              {["f", "X", "in"].map((s) => (
                 <a
                   key={s}
                   href="#"

@@ -4,13 +4,6 @@ import Link from "next/link";
 
 const services = [
   {
-    title: "Website Design & Development",
-    description:
-      "Professional business websites, e-commerce platforms, and corporate websites designed for performance and modern user experience.",
-    image: true,
-    accent: false,
-  },
-  {
     title: "ERP System Development",
     description:
       "Development of powerful Enterprise Resource Planning systems to manage accounting, inventory, HR, sales, and overall business operations in one platform.",
@@ -25,6 +18,13 @@ const services = [
     accent: false,
   },
   {
+    title: "Website Design & Development",
+    description:
+      "Professional business websites, e-commerce platforms, and corporate websites designed for performance and modern user experience.",
+    image: true,
+    accent: false,
+  },
+  {
     title: "Software Maintenance & Support",
     description:
       "Ongoing technical support, updates, system improvements, and performance monitoring to ensure your systems run smoothly.",
@@ -34,7 +34,7 @@ const services = [
 ];
 
 export default function ServicesSection() {
-  const [active, setActive] = useState(1);
+  const [active, setActive] = useState(0);
 
   return (
     <section className="py-20 lg:py-28 bg-[#0d2535] relative overflow-hidden">
@@ -111,7 +111,7 @@ export default function ServicesSection() {
         </div>
 
         {/* Dot indicators */}
-        <div className="flex justify-center gap-2 mt-10">
+        <div className="hidden sm:flex justify-center gap-2 mt-10">
           {services.map((_, idx) => (
             <button
               key={idx}
