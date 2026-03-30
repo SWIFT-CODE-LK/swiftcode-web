@@ -4,6 +4,8 @@ import Script from "next/script";
 import "./globals.css";
 import BackToTop from "../components/BacktoTop";
 
+const GA_ID = "G-8WRN9S451Q";
+
 const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-playfair",
@@ -27,31 +29,26 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const GA_ID = "G-8WRN9S451Q";
-
   return (
     <html lang="en" className={`${playfair.variable} ${dmSans.variable}`}>
-      
-      <head>
-        {/* Google Analytics */}
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${GA_ID}');
-          `}
-        </Script>
-      </head>
-
       <body className="antialiased">
         {children}
         <BackToTop />
       </body>
+
+      {/* Google Analytics */}
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+        strategy="beforeInteractive"
+      />
+      <Script id="google-analytics" strategy="beforeInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${GA_ID}', { send_page_view: true });
+        `}
+      </Script>
     </html>
   );
 }
