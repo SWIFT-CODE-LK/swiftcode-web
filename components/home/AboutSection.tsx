@@ -80,7 +80,7 @@ export default function AboutSection() {
               2022.
             </h2>
             <p className="text-gray-500 text-base leading-relaxed mb-8 max-w-lg">
-              Swiftcode is a technology-driven software company focused on building smart, scalable, and efficient digital solutions. From custom software development to modern web platforms, we help businesses transform ideas into powerful digital products and grow in an increasingly digital world.
+              Swiftcode is a technology driven software company focused on building smart, scalable, and efficient digital solutions. From custom software development to modern web platforms, we help businesses transform ideas into powerful digital products and grow in an increasingly digital world.
             </p>
             <Link
               href="/about"
