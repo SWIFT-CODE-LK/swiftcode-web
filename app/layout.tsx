@@ -3,6 +3,7 @@ import { Playfair_Display, DM_Sans } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import BackToTop from "../components/BacktoTop";
+import WhatsAppButton from "../components/WhatsAppButton";
 
 const GA_ID = "G-8WRN9S451Q";
 
@@ -47,6 +48,7 @@ export default function RootLayout({
         </Script>
         {children}
         <BackToTop />
+        <WhatsAppButton /> 
       </body>
     </html>
   );
