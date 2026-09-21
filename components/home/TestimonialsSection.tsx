@@ -73,7 +73,7 @@ export default function TestimonialsSection() {
             <div className="relative rounded-sm overflow-hidden aspect-[4/3]">
               <Image
                 src="/Banner/reviews.png"
-                alt="Testimonial"
+                alt="Swiftcode client reviews – POS, ERP and web application testimonials"
                 fill
                 className="object-cover"
               />

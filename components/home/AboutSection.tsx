@@ -75,12 +75,12 @@ export default function AboutSection() {
               Welcome To Swiftcode
             </p>
             <h2 className="font-serif text-4xl lg:text-5xl font-bold text-[#0d2535] leading-tight mb-6">
-              We are a modern software development company,{" "}
+              We are a software development company in Sri Lanka,{" "}
               <span className="text-orange-500">delivering innovative digital solutions</span> since
               2022.
             </h2>
             <p className="text-gray-500 text-base leading-relaxed mb-8 max-w-lg">
-              Swiftcode is a technology driven software company focused on building smart, scalable, and efficient digital solutions. From custom software development to modern web platforms, we help businesses transform ideas into powerful digital products and grow in an increasingly digital world.
+              Swiftcode is a technology driven software company in Sri Lanka focused on building smart, scalable, and efficient digital solutions. From ERP and POS systems to custom software development and modern web platforms, we help businesses transform ideas into powerful digital products and grow in an increasingly digital world.
             </p>
             <Link
               href="/about"

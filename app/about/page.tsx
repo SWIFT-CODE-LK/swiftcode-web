@@ -1,8 +1,17 @@
+import type { Metadata } from "next";
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/Footer";
 import Link from "next/link";
 import Image from "next/image";
 import MissionVisionSection from "../../components/home/MissionVisionSection";
+
+export const metadata: Metadata = {
+  title: "About Us – Software Company in Sri Lanka",
+  description:
+    "About Swiftcode: a software company in Sri Lanka since 2022, delivering ERP software, POS systems, web and mobile app development. Meet our team and values.",
+  alternates: { canonical: "/about" },
+  openGraph: { url: "/about" },
+};
 
 const values = [
   {
@@ -59,10 +68,10 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 xl:px-20">
           <p className="text-(--theme-color) text-xs font-bold tracking-[0.2em] uppercase mb-3">Who We Are</p>
           <h1 className="font-serif text-4xl lg:text-6xl font-bold text-white mb-5 max-w-2xl leading-tight">
-            About Swiftcode
+            About Swiftcode – Software Company in Sri Lanka
           </h1>
           <p className="text-white/50 text-base max-w-xl leading-relaxed">
-            Since 2022, Swiftcode has been empowering businesses with smart ERP, POS, web, and mobile solutions that drive growth and digital transformation.
+            Since 2022, Swiftcode has been empowering Sri Lankan businesses with smart ERP software, POS systems, web, and mobile app development that drive growth and digital transformation.
           </p>
           <div className="flex items-center gap-2 mt-6 text-sm">
             <Link href="/" className="text-white/50 hover:text-orange-400 transition-colors">Home</Link>

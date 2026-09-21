@@ -1,0 +1,23 @@
+# Swiftcode
+
+> Swiftcode is a software company in Athurugiriya, Sri Lanka, building ERP software, POS systems, custom web applications, and iOS/Android mobile apps for growing businesses since 2022.
+
+## Pages
+
+- [Home](https://swiftcode.lk/): ERP, POS, web and mobile software development in Sri Lanka.
+- [Services & Projects](https://swiftcode.lk/services): ERP software development, POS systems for retail and restaurants, custom web applications, mobile app development, plus FAQs.
+- [About Us](https://swiftcode.lk/about): Company values, milestones, and team.
+- [Contact](https://swiftcode.lk/contact): Request a free software quote. Phone +94 70 490 0850, +94 76 621 6791. Email swiftcode.srilanka@gmail.com.
+
+## Services
+
+- ERP software: finance, HR, inventory, multi-branch operations, real-time analytics.
+- POS systems: touch-optimized, multi-payment support, inventory sync, loyalty programs, offline mode.
+- Web applications: full-stack development, REST/GraphQL APIs, cloud deployment.
+- Mobile applications: native iOS & Android, push notifications, offline-first, app store submission.
+
+## Contact
+
+- Phone: +94 70 490 0850, +94 76 621 6791
+- Email: swiftcode.srilanka@gmail.com
+- Location: Athurugiriya, Sri Lanka
