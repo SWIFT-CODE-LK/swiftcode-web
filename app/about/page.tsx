@@ -10,7 +10,6 @@ export const metadata: Metadata = {
   description:
     "About Swiftcode: a software company in Sri Lanka since 2022, delivering ERP software, POS systems, web and mobile app development. Meet our team and values.",
   alternates: { canonical: "/about" },
-  openGraph: { url: "/about" },
 };
 
 const values = [

@@ -19,7 +19,6 @@ export const metadata: Metadata = {
   description:
     "Swiftcode is a software company in Sri Lanka building ERP software, POS systems, custom web applications and mobile apps for growing businesses.",
   alternates: { canonical: "/" },
-  openGraph: { url: "/" },
 };
 
 export default function Home() {

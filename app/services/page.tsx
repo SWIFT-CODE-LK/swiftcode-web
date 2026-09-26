@@ -8,7 +8,6 @@ export const metadata: Metadata = {
   description:
     "Swiftcode services in Sri Lanka: ERP software development, POS systems for retail & restaurants, custom web applications and iOS/Android mobile app development.",
   alternates: { canonical: "/services" },
-  openGraph: { url: "/services" },
 };
 
 const faqs = [

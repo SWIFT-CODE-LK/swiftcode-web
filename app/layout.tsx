@@ -52,16 +52,20 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
+    url: "/",
     siteName: "Swiftcode",
-    title: "Swiftcode | Software Company in Sri Lanka",
-    description:
-      "ERP software, POS systems, web and mobile app development for growing businesses in Sri Lanka.",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Swiftcode – Software Company in Sri Lanka",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Swiftcode | Software Company in Sri Lanka",
-    description:
-      "ERP software, POS systems, web and mobile app development for growing businesses in Sri Lanka.",
+    images: ["/opengraph-image"],
   },
 };
 
