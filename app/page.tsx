@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Navbar from "../components/navbar/Navbar";
 import HeroSection from "../components/hero/HeroSection";
 import AboutSection from "../components/home/AboutSection";
@@ -9,6 +10,16 @@ import TestimonialsSection from "../components/home/TestimonialsSection";
 import PartnersSection from "../components/home/PartnersSection";
 import MissionVisionSection from "../components/home/MissionVisionSection";
 import Footer from "../components/Footer";
+
+export const metadata: Metadata = {
+  title: {
+    absolute:
+      "Swiftcode | Software Company in Sri Lanka – ERP, POS, Web & Mobile Development",
+  },
+  description:
+    "Swiftcode is a software company in Sri Lanka building ERP software, POS systems, custom web applications and mobile apps for growing businesses.",
+  alternates: { canonical: "/" },
+};
 
 export default function Home() {
   return (

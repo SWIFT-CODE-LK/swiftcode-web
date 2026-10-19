@@ -9,7 +9,7 @@ const slides = [
     tagline: "INNOVATIVE SOFTWARE SOLUTIONS.",
     heading: "Smart ERP & Business Systems.",
     description:
-      "Swiftcode develops powerful ERP and POS systems designed to streamline operations, automate processes, and help businesses manage their workflow efficiently.",
+      "Swiftcode develops powerful ERP and POS systems in Sri Lanka designed to streamline operations, automate processes, and help businesses manage their workflow efficiently.",
     image: "/slideshow/hero1.png",
   },
   {
@@ -169,9 +169,13 @@ export default function HeroSection() {
               {slide.tagline}
             </p>
 
-            <h1 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-[3.2rem] xl:text-[3.8rem] font-serif font-bold leading-[1.1] mb-5 lg:mb-7 mx-auto lg:mx-0 max-w-xl">
-              {slide.heading}
+            {/* Static H1 for SEO — slide headings rotate, so the H1 stays constant */}
+            <h1 className="sr-only">
+              Swiftcode – Software Company in Sri Lanka | ERP, POS, Web &amp; Mobile Development
             </h1>
+            <p className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-[3.2rem] xl:text-[3.8rem] font-serif font-bold leading-[1.1] mb-5 lg:mb-7 mx-auto lg:mx-0 max-w-xl">
+              {slide.heading}
+            </p>
 
             <p className="text-white/60 text-sm sm:text-base lg:text-lg leading-relaxed mb-8 mx-auto lg:mx-0 max-w-md lg:max-w-none">
               {slide.description}

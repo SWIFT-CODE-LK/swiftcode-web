@@ -62,7 +62,7 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <Logo />
             <p className="text-white/50 text-sm leading-relaxed mb-6">
-              Swiftcode builds smart, scalable software solutions designed to transform ideas into powerful digital experiences.
+              Swiftcode is a software company in Sri Lanka building smart, scalable ERP, POS, web and mobile solutions designed to transform ideas into powerful digital experiences.
             </p>
             {/* Social icons */}
             <div className="flex items-center gap-3">
@@ -145,7 +145,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-white/40 text-sm">
-            Copyright © {new Date().getFullYear()} // All Right Reserved by{" "}
+            Copyright © {new Date().getFullYear()} {"//"} All Right Reserved by{" "}
             <Link
               href="/"
               className="text-(--theme-color) hover:text-orange-300 transition-colors"
@@ -164,7 +164,7 @@ export default function Footer() {
                   {link}
                 </Link>
                 {idx < bottomLinks.length - 1 && (
-                  <span className="text-white/20 text-xs">//</span>
+                  <span className="text-white/20 text-xs">{"//"}</span>
                 )}
               </span>
             ))}
