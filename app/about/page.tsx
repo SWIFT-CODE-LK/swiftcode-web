@@ -29,7 +29,6 @@ const values = [
 
 const team = [
   { name: "Seshan Nethmike", role: "CEO & Founder", image: "/employees/seshan.jpeg", experience: "20+ years" },
-  { name: "Sahiru Lakshan", role: "CTO", image: "/employees/sahiru.jpeg", experience: "15+ years" },
   { name: "Thisara Tharinda", role: "System Administrator", image: "/employees/thisara.jpeg", experience: "12+ years" },
 ];
 
