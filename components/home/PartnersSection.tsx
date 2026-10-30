@@ -4,7 +4,7 @@ const partners = [
   { name: "Avira", image: "/Customers/Avira.png" },
   { name: "Design.lk", image: "/Customers/designlk.svg" },
   { name: "Phoenix", image: "/Customers/Phoenix.jpeg" },
-  // { name: "lezaro", image: "/Customers/lezaro.png" },
+  { name: "lezaro", image: "/Customers/lezaro.png" },
 ];
 
 export default function PartnersSection() {
