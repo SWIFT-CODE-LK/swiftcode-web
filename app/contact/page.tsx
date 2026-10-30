@@ -148,7 +148,7 @@ export default function ContactPage() {
             Contact Us
           </h1>
           <p className="text-white/50 text-base max-w-xl leading-relaxed">
-            Ready to start your project? Get in touch today.
+            Ready to start your software project in Sri Lanka? Get a free quote today.
           </p>
           <div className="flex items-center gap-2 mt-6 text-sm">
             <Link

@@ -54,7 +54,7 @@ export default function ServicesSection() {
             Our Services
           </p>
           <h2 className="font-serif text-4xl lg:text-5xl font-bold text-white">
-           Solutions
+            Software Development Services in Sri Lanka
           </h2>
         </div>
 

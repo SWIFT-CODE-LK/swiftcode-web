@@ -1,6 +1,52 @@
+import type { Metadata } from "next";
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/Footer";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Services – ERP Software, POS Systems & App Development in Sri Lanka",
+  description:
+    "Swiftcode services in Sri Lanka: ERP software development, POS systems for retail & restaurants, custom web applications and iOS/Android mobile app development.",
+  alternates: { canonical: "/services" },
+};
+
+const faqs = [
+  {
+    question: "What services does Swiftcode offer in Sri Lanka?",
+    answer:
+      "Swiftcode offers ERP software development, POS systems for retail and restaurants, custom web application development, and iOS & Android mobile app development for businesses across Sri Lanka.",
+  },
+  {
+    question: "Do you provide ERP software for businesses in Sri Lanka?",
+    answer:
+      "Yes. We build end-to-end ERP systems covering finance, HR, inventory, and multi-branch operations, tailored to Sri Lankan businesses and deployed with training and support.",
+  },
+  {
+    question: "Can you develop a POS system for my retail shop or restaurant?",
+    answer:
+      "Yes. Our POS systems support multi-payment gateways, inventory sync, loyalty programs, offline mode, and real-time sales reporting for retail, restaurant, and service businesses.",
+  },
+  {
+    question: "How much does custom software development cost in Sri Lanka?",
+    answer:
+      "Cost depends on scope, features, and integrations. Share your requirements through our contact form and we will send you a free, no-obligation quote within 24 hours.",
+  },
+  {
+    question: "Do you provide support after the software is launched?",
+    answer:
+      "Yes. Every project includes post-launch support, updates, and performance monitoring, with ongoing maintenance plans available to keep your systems running smoothly.",
+  },
+];
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.question,
+    acceptedAnswer: { "@type": "Answer", text: f.answer },
+  })),
+};
 
 const services = [
   {
@@ -114,6 +160,10 @@ const services = [
 export default function ServicesPage() {
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <Navbar />
 
       {/* Page Hero */}
@@ -125,10 +175,10 @@ export default function ServicesPage() {
         <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 xl:px-20">
           <p className="text-(--theme-color) text-xs font-bold tracking-[0.2em] uppercase mb-3">Our Work</p>
           <h1 className="font-serif text-4xl lg:text-6xl font-bold text-white mb-4 max-w-2xl">
-            Projects & Services
+            Software Services & Projects in Sri Lanka
           </h1>
           <p className="text-white/50 text-base max-w-xl leading-relaxed">
-            From enterprise ERP systems to mobile apps — we build software that drives real business results.
+            From enterprise ERP software to POS systems and mobile apps — we build software that drives real business results for Sri Lankan companies.
           </p>
           <div className="flex items-center gap-2 mt-6 text-sm">
             <Link href="/" className="text-white/50 hover:text-orange-400 transition-colors">Home</Link>
@@ -223,6 +273,36 @@ export default function ServicesPage() {
           </div>
         </section>
       ))}
+
+      {/* FAQ */}
+      <section className="py-20 lg:py-28 bg-white">
+        <div className="max-w-4xl mx-auto px-6 md:px-10">
+          <div className="text-center mb-12">
+            <p className="text-orange-500 text-xs font-bold tracking-[0.2em] uppercase mb-3">FAQ</p>
+            <h2 className="font-serif text-3xl lg:text-4xl font-bold text-[#0d2535]">
+              Frequently Asked Questions
+            </h2>
+          </div>
+          <div className="space-y-4">
+            {faqs.map((faq) => (
+              <details
+                key={faq.question}
+                className="group border border-gray-100 hover:border-orange-200 rounded-sm transition-colors duration-200"
+              >
+                <summary className="cursor-pointer list-none p-5 sm:p-6 flex items-center justify-between gap-4 font-semibold text-[#0d2535] text-sm sm:text-base">
+                  {faq.question}
+                  <span className="flex-shrink-0 w-7 h-7 rounded-full bg-orange-50 text-orange-500 flex items-center justify-center text-lg leading-none group-open:rotate-45 transition-transform duration-200">
+                    +
+                  </span>
+                </summary>
+                <p className="px-5 sm:px-6 pb-5 sm:pb-6 text-gray-500 text-sm leading-relaxed">
+                  {faq.answer}
+                </p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* CTA */}
       <section className="py-16 bg-(--theme-color) relative overflow-hidden">
