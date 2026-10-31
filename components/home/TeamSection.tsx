@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 const team = [
   { name: "Robert Anderson", role: "Senior Consultant", initials: "RA" },
   { name: "Michael Davies", role: "Financial Advisor", initials: "MD" },
@@ -22,7 +20,7 @@ export default function TeamSection() {
 
         {/* Team grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 max-w-4xl mx-auto">
-          {team.map((member, idx) => (
+          {team.map((member) => (
             <div key={member.name} className="flex flex-col items-center text-center group">
               {/* Circular photo */}
               <div className="relative mb-5">
